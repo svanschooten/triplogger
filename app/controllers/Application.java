@@ -1,6 +1,8 @@
 package controllers;
 
-import play.*;
+import models.Trip;
+import play.api.templates.Html;
+import play.data.Form;
 import play.mvc.*;
 
 import views.html.*;
@@ -8,14 +10,19 @@ import views.html.*;
 public class Application extends Controller {
   
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render(Html.apply("TODO")));
     }
 
     public static Result profile() {
-        return ok(profile.render("Your new application is ready."));
+        return ok(profile.render(Html.apply("TODO")));
     }
 
     public static Result stats() {
-        return ok(stats.render("Your new application is ready."));
+        return ok(stats.render(Html.apply("TODO")));
     }
+
+    public static Result login(String user , String pw) {
+        return ok(stats.render(Html.apply("TODO")));
+    }
+
 }
