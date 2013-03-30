@@ -14,12 +14,46 @@ body, select, input, textarea {
 // Add your own custom styles below
 //-----------------------------------
 
-body {}
+body {
+}
 
-#container {}
+#container {
+	width: 800px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
 
-header {}
+.container-narrow {
+	margin: 0 auto;
+    max-width: 700px;
+}
 
-#main {}
+header {
+	width: 100%;
+	background-color: #c7e2f4;
+	height: 50px;
+	img {
+		padding: 5px;
+	}
+}
 
-footer {}
+#main {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+
+footer {
+	width: 800px;
+	height: 40px;
+	background-color: #bababa;
+	position: absolute;
+	bottom: 0;
+	p{
+		width: 300px;
+		margin: auto;
+		padding-top: 10px;
+	}
+}

@@ -310,6 +310,54 @@ body, select, input, textarea {
   color: #222222;
 }
 
+/* line 20, ../sass/partials/_page.scss */
+#container {
+  width: 800px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+/* line 28, ../sass/partials/_page.scss */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* line 33, ../sass/partials/_page.scss */
+header {
+  width: 100%;
+  background-color: #c7e2f4;
+  height: 50px;
+}
+/* line 37, ../sass/partials/_page.scss */
+header img {
+  padding: 5px;
+}
+
+/* line 42, ../sass/partials/_page.scss */
+#main {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+/* line 48, ../sass/partials/_page.scss */
+footer {
+  width: 800px;
+  height: 40px;
+  background-color: #bababa;
+  position: absolute;
+  bottom: 0;
+}
+/* line 54, ../sass/partials/_page.scss */
+footer p {
+  width: 300px;
+  margin: auto;
+  padding-top: 10px;
+}
+
 /* line 6, ../../../../Documents/WebDev/compass.app/lib/ruby/compass_extensions/heygrady-compass-html5-boilerplate-4cc8815/stylesheets/html5-boilerplate/_helpers.scss */
 .ir {
   background-color: transparent;
