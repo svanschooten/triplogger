@@ -7,7 +7,7 @@ tmp
 dist
 /.idea/*
 /.idea
-/.idea/workspace.xml
+workspace.xml
 /*.iml
 /out
 /.idea_modules
