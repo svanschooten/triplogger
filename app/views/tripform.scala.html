@@ -1,0 +1,22 @@
+@import helper._
+
+@main("Local trippping"){
+@form(routes.Application.addTrip()) {
+    <select name="drug">
+        @for(drug <- Drug.all()) {
+             <option value=@drug.name>@drug.name</option>
+        }
+    </select>
+    <input type="number" name="number" min="1" value="1">
+    <select name="measure">
+        @for(measure <- Measure.all()) {
+            <option value=@measure.name title=@measure.name >@measure.display</option>
+        }
+    </select>
+    <input type="datetime" name="from">
+    <input type="datetime" name="till">
+    <p>todo: buddy's</p>
+    <textarea rows="1" cols="30" name="comments"></textarea>
+    <input type="submit">
+}
+        }

@@ -32,6 +32,10 @@ public class Application extends Controller {
         return ok(index.render());
     }
 
+    public static Result addLocalTrip() {
+        return ok(tripform.render());
+    }
+
     public static Result addTrip() {
         Form<Trip> tripForm = Form.form(Trip.class);
         if(tripForm.hasErrors()) {

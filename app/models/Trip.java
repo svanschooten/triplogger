@@ -1,7 +1,6 @@
 package models;
 
 
-import org.springframework.beans.factory.xml.BeanDefinitionParserDelegate;
 import play.data.format.Formats;
 import play.db.ebean.*;
 import javax.persistence.*;
