@@ -19,11 +19,11 @@ public class Application extends Controller {
         return ok(stats.render(Html.apply("TODO")));
     }
 
-    public static Result login() {
+    public static Result logIn() {
         return ok(stats.render(Html.apply("TODO")));
     }
 
-    public static Result autoLogIn(Result user , String pw) {
+    public static Result autoLogIn(String user , String pw) {
         return ok(index.render(Html.apply("TODO")));
     }
 
