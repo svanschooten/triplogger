@@ -1,7 +1,11 @@
 @(message: String)
 
 @main("Welcome to Play 2.1") {
-    
-    TODO
+
+    <form action="@routes.Application.logIn()" method="post">
+        <input name="alias">
+        <input type="password">
+        <input type="submit">
+    </form>
     
 }

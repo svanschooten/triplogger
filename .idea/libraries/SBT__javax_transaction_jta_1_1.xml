@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="SBT: javax.transaction:jta:1.1">
     <CLASSES>
-      <root url="jar://D:/Projects/Play/repository/local/javax.transaction/jta/1.1/jars/jta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../repository/local/javax.transaction/jta/1.1/jars/jta.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
