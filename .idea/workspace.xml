@@ -104,19 +104,10 @@
       <file leaf-file-name="main.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="46" selection-start="1445" selection-end="1445" vertical-scroll-proportion="-22.884615">
+            <state line="29" column="39" selection-start="1276" selection-end="1276" vertical-scroll-proportion="-18.961538">
               <folding>
                 <marker date="1364661038700" expanded="true" signature="2356:2454" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.conf" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/conf/application.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="50" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.2600229">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,7 +142,7 @@
       <file leaf-file-name="Drug.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Drug.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="17" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
+            <state line="23" column="24" selection-start="399" selection-end="405" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,7 +153,18 @@
       <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="21" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
+            <state line="27" column="24" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="498" selection-end="498" vertical-scroll-proportion="0.5063001">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,7 +175,7 @@
       <file leaf-file-name="Measure.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Measure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="34" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+            <state line="21" column="25" selection-start="400" selection-end="407" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,8 +206,8 @@
         <option value="$PROJECT_DIR$/app/views/profile.scala.html" />
         <option value="$PROJECT_DIR$/app/views/stats.scala.html" />
         <option value="$PROJECT_DIR$/app/views/index.scala.html" />
-        <option value="$PROJECT_DIR$/app/views/main.scala.html" />
         <option value="$PROJECT_DIR$/conf/application.conf" />
+        <option value="$PROJECT_DIR$/app/views/main.scala.html" />
       </list>
     </option>
   </component>
@@ -583,24 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Measure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="34" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Drug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="17" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -636,24 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="21" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="498" selection-end="498" vertical-scroll-proportion="0.5063001">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/stats.scala.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="4" selection-start="40" selection-end="40" vertical-scroll-proportion="-2.6153846">
@@ -684,19 +650,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="33" selection-start="1321" selection-end="1956" vertical-scroll-proportion="0.84421533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="46" selection-start="1445" selection-end="1445" vertical-scroll-proportion="-22.884615">
+        <state line="29" column="39" selection-start="1276" selection-end="1276" vertical-scroll-proportion="-18.961538">
           <folding>
             <marker date="1364661038700" expanded="true" signature="2356:2454" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+    <entry file="file://$PROJECT_DIR$/app/models/Drug.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="50" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.2600229">
-          <folding />
+        <state line="23" column="24" selection-start="399" selection-end="405" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Measure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="25" selection-start="400" selection-end="407" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="24" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="498" selection-end="498" vertical-scroll-proportion="0.5063001">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
