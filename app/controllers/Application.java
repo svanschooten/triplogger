@@ -10,5 +10,12 @@ public class Application extends Controller {
     public static Result index() {
         return ok(index.render("Your new application is ready."));
     }
-  
+
+    public static Result profile() {
+        return ok(profile.render("Your new application is ready."));
+    }
+
+    public static Result stats() {
+        return ok(stats.render("Your new application is ready."));
+    }
 }
