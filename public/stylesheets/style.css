@@ -35,6 +35,10 @@ body {
   line-height: 1.231;
 }
 
+.navbar {
+    width: 740px;
+}
+
 /* line 64, ../../../../Documents/WebDev/compass.app/lib/ruby/compass_extensions/heygrady-compass-html5-boilerplate-4cc8815/stylesheets/html5-boilerplate/_normalize.scss */
 body, button, input, select, textarea {
   font-family: sans-serif;

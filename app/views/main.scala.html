@@ -1,7 +1,5 @@
 @(page: String)(content: Html)
 
-@import helper._
-
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
@@ -25,33 +23,19 @@
 
         <div class="navbar">
             <div class="navbar-inner">
-                <img src=@routes.Assets.at("images/logo.png") class="muted"/>
+                <img src=@routes.Assets.at("images/logo.png") class="muted pull-right"/>
                 <ul class="nav">
-                    @if(page.equals("index")) {
-                        <li class="active"><a href="/">Log</a></li>
-                    } else {
-                        <li><a href="/">Log</a></li>
-                    }
-
-                    @if(page.equals("profile")) {
-                    <li class="active"><a href="/">Profile</a></li>
-                    } else {
-                    <li><a href="/">Profile</a></li>
-                    }
-
-                    @if(page.equals("stats")) {
-                    <li class="active"><a href="/">Statistics</a></li>
-                    } else {
-                    <li><a href="/">Statistics</a></li>
-                    }
+                    <li class="active"><a href="/">Log</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/stats">Statistics</a></li>
                 </ul>
             </div>
         </div>
     </header><!-- /header -->
-    <div id='main' role='main'>
+    <div id='main' class="well" role='main'>
         @content
     </div><!-- /main -->
-    <footer><p>&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->
+    <footer class="well well-small"><p>&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->
 </div><!-- /container -->
 <!-- Le javascript
 ================================================== -->
