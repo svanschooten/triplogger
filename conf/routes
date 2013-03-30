@@ -4,8 +4,10 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST    /                           controllers.Application.logIn()
-GET     /:user:pw                   controllers.Application.autoLogIn(user: String, pw: String)
+POST    /login                      controllers.Application.logIn()
+POST    /addtrip                    controllers.Application.addTrip()
+POST    /deleteTrip/:id             controllers.Application.deleteTrip(id: Integer)
+GET     /login/:user&:pw            controllers.Application.autoLogIn(user: String, pw: String)
 GET     /profile                    controllers.Application.profile()
 GET     /stats                      controllers.Application.stats()
 

@@ -3,30 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="c77b897c-b21a-498b-8a5e-3343ed367e46" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Application.java" afterPath="$PROJECT_DIR$/app/controllers/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Trip.java" afterPath="$PROJECT_DIR$/app/models/Trip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/index.scala.html" afterPath="$PROJECT_DIR$/app/views/index.scala.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.scala.html" afterPath="$PROJECT_DIR$/app/views/main.scala.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/profile.scala.html" afterPath="$PROJECT_DIR$/app/views/profile.scala.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stats.scala.html" afterPath="$PROJECT_DIR$/app/views/stats.scala.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="triplogger.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/main.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364663160011" ignored="false" />
-    <file path="/routes" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364657040985" ignored="false" />
-    <file path="/Application.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364662126417" ignored="false" />
+    <file path="/main.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364663378913" ignored="false" />
+    <file path="/routes" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364669956822" ignored="false" />
+    <file path="/Application.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364669892294" ignored="false" />
     <file path="/application.conf" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364654923172" ignored="false" />
-    <file path="/index.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364660564372" ignored="false" />
-    <file path="/profile.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364662735444" ignored="false" />
-    <file path="/stats.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364656803624" ignored="false" />
+    <file path="/index.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364663364226" ignored="false" />
+    <file path="/profile.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364663722901" ignored="false" />
+    <file path="/stats.scala.html" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364663733199" ignored="false" />
     <file path="/User.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364658234202" ignored="false" />
     <file path="/Drug.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364658432145" ignored="false" />
     <file path="/fragment.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364658148548" ignored="false" />
-    <file path="/Trip.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364658279510" ignored="false" />
+    <file path="/Trip.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364669635469" ignored="false" />
     <file path="/Measure.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364658002377" ignored="false" />
     <file path="/style.css" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364660112209" ignored="false" />
     <file path="/Dummy.txt" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364661624410" ignored="false" />
-    <file path="$PROJECT_DIR$/target/scala-2.10/src_managed/main/routes_reverseRouting.scala" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364662093758" ignored="false" />
-    <file path="$PROJECT_DIR$/target/scala-2.10/src_managed/main/routes_routing.scala" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364662093758" ignored="false" />
-    <file path="$PROJECT_DIR$/target/scala-2.10/src_managed/main/controllers/routes.java" changelist="c77b897c-b21a-498b-8a5e-3343ed367e46" time="1364662093758" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +88,9 @@
       <file leaf-file-name="main.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="25" selection-start="1138" selection-end="1138" vertical-scroll-proportion="-17.653847">
+            <state line="26" column="32" selection-start="1112" selection-end="1112" vertical-scroll-proportion="-17.0">
               <folding>
-                <marker date="1364663160674" expanded="true" signature="2998:3096" placeholder="..." />
+                <marker date="1364663526206" expanded="true" signature="2974:3072" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -99,7 +99,7 @@
       <file leaf-file-name="index.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="-0.0">
+            <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -108,7 +108,18 @@
       <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="21" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
+            <state line="44" column="55" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="5" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,25 +130,7 @@
       <file leaf-file-name="routes" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="70" selection-start="309" selection-end="333" vertical-scroll-proportion="0.13631158">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.scala.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/profile.scala.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stats.scala.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/stats.scala.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="8" column="82" selection-start="391" selection-end="391" vertical-scroll-proportion="0.15578465">
               <folding />
             </state>
           </provider>
@@ -166,16 +159,16 @@
         <option value="$PROJECT_DIR$/app/models/USer.java" />
         <option value="$PROJECT_DIR$/app/models/Measure.java" />
         <option value="$PROJECT_DIR$/app/models/User.java" />
-        <option value="$PROJECT_DIR$/app/models/Trip.java" />
         <option value="$PROJECT_DIR$/app/models/Drug.java" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/conf/application.conf" />
-        <option value="$PROJECT_DIR$/conf/routes" />
-        <option value="$PROJECT_DIR$/app/controllers/Application.java" />
-        <option value="$PROJECT_DIR$/app/views/stats.scala.html" />
-        <option value="$PROJECT_DIR$/app/views/profile.scala.html" />
         <option value="$PROJECT_DIR$/app/views/index.scala.html" />
         <option value="$PROJECT_DIR$/app/views/main.scala.html" />
+        <option value="$PROJECT_DIR$/app/views/profile.scala.html" />
+        <option value="$PROJECT_DIR$/app/views/stats.scala.html" />
+        <option value="$PROJECT_DIR$/app/models/Trip.java" />
+        <option value="$PROJECT_DIR$/app/controllers/Application.java" />
+        <option value="$PROJECT_DIR$/conf/routes" />
       </list>
     </option>
   </component>
@@ -572,15 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="24" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="59" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0">
@@ -608,37 +592,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/stats.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="25" selection-start="1138" selection-end="1138" vertical-scroll-proportion="-17.653847">
-          <folding>
-            <marker date="1364663160674" expanded="true" signature="2998:3096" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+        <state line="1" column="8" selection-start="25" selection-end="25" vertical-scroll-proportion="0.020070838">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/profile.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+        <state line="1" column="8" selection-start="27" selection-end="27" vertical-scroll-proportion="0.020070838">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="32" selection-start="1112" selection-end="1112" vertical-scroll-proportion="-17.0">
+          <folding>
+            <marker date="1364663526206" expanded="true" signature="2974:3072" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
+        <state line="44" column="55" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="5" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -647,7 +640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="70" selection-start="309" selection-end="333" vertical-scroll-proportion="0.13631158">
+        <state line="8" column="82" selection-start="391" selection-end="391" vertical-scroll-proportion="0.15578465">
           <folding />
         </state>
       </provider>

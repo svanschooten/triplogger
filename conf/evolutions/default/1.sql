@@ -19,8 +19,8 @@ create table measure (
 
 create table trip (
   tid                       integer not null,
-  number                    integer,
   comments                  varchar(255),
+  number                    integer,
   constraint pk_trip primary key (tid))
 ;
 
