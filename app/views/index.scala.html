@@ -1,11 +1,12 @@
-@(message: String)
+@(content: Html)
 
-@main("Welcome to Play 2.1") {
+
+@main("Index") {
 
     <form action="@routes.Application.logIn()" method="post">
         <input name="alias">
         <input type="password">
         <input type="submit">
     </form>
-    
+
 }

@@ -1,9 +1,6 @@
 package controllers;
 
-import ch.qos.logback.classic.html.HTMLLayout;
-import org.apache.commons.lang3.text.FormatFactory;
-import org.h2.result.ResultColumn;
-import models.*;
+import models.Trip;
 import play.api.templates.Html;
 import play.data.Form;
 import play.mvc.*;
@@ -24,12 +21,7 @@ public class Application extends Controller {
         return ok(stats.render(Html.apply("TODO")));
     }
 
-    public static Result logIn() {
-        User user = Form.form(User.class).bindFromRequest().get();
-        return ok(stats.render(Html.apply("TODO")));
-    }
-
-    public static Result autoLogIn(String user , String pw) {
+    public static Result login(String user , String pw) {
         return ok(stats.render(Html.apply("TODO")));
     }
 

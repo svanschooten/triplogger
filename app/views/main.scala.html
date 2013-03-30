@@ -1,5 +1,6 @@
-@(title: String)(content: Html)
+@(page: String)(content: Html)
 
+@import helper._
 
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
@@ -15,9 +16,8 @@
     <meta content='A logging web application for all your trips.' name='description' />
     <meta content='The MAKETEK guys' name='author' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='stylesheets/style.css' rel='stylesheet' />
-    <link href='stylesheets/bootstrap.css' rel='stylesheet' />
-    <link href='stylesheets/bootstrap-min.css' rel='stylesheet' />
+    <link href=@routes.Assets.at("stylesheets/style.css") rel='stylesheet' />
+    <link href=@routes.Assets.at("stylesheets/bootstrap.css") rel='stylesheet' />
 </head>
 <body>
 <div class="container-narrow" id='container'>
@@ -25,11 +25,25 @@
 
         <div class="navbar">
             <div class="navbar-inner">
-                <img src="images/logo.png" class="muted"/>
+                <img src=@routes.Assets.at("images/logo.png") class="muted"/>
                 <ul class="nav">
-                    <li class="active"><a href="log">Log</a></li>
-                    <li><a href="profile">Profile</a></li>
-                    <li><a href="stats">Statistics</a></li>
+                    @if(page.equals("index")) {
+                        <li class="active"><a href="/">Log</a></li>
+                    } else {
+                        <li><a href="/">Log</a></li>
+                    }
+
+                    @if(page.equals("profile")) {
+                    <li class="active"><a href="/">Profile</a></li>
+                    } else {
+                    <li><a href="/">Profile</a></li>
+                    }
+
+                    @if(page.equals("stats")) {
+                    <li class="active"><a href="/">Statistics</a></li>
+                    } else {
+                    <li><a href="/">Statistics</a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -42,15 +56,14 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src='javascripts/bootstrap.js'></script>
-<script src='javascripts/bootstrap-min.js'></script>
-<script src='javascripts/modernizr-2.0.6.min.js'></script>
-<script src='//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+<script src=@routes.Assets.at("javascripts/bootstrap.js")></script>
+<script src=@routes.Assets.at("javascripts//modernizr-2.0.6.min.js")></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
     window.jQuery || document.write("<script src='javascripts/jquery-1.6.2.min.js'>\x3C/script>")
 </script>
-    <script src='javascripts/plugins.js'></script>
-    <script src='javascripts/script.js'></script>
+    <script src=@routes.Assets.at("javascripts/plugins.js")></script>
+    <script src=@routes.Assets.at("javascripts/script.js")></script>
     <!--[if lt IE 7]>
     <script src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js'></script>
     <script>
