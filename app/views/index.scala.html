@@ -1,7 +1,12 @@
 @(content: Html)
 
-@main("index") {
 
-    @content
-    
+@main("Index") {
+
+    <form action="@routes.Application.logIn()" method="post">
+        <input name="alias">
+        <input type="password">
+        <input type="submit">
+    </form>
+
 }

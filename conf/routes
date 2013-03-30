@@ -4,7 +4,9 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET     /:user:pw                   controllers.Application.login(user: String, pw: String)
+GET     /                           controllers.Application.index()
+POST    /                           controllers.Application.logIn()
+GET     /:user:pw                   controllers.Application.autoLogIn(user: String, pw: String)
 GET     /profile                    controllers.Application.profile()
 GET     /stats                      controllers.Application.stats()
 

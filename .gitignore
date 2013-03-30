@@ -6,6 +6,8 @@ tmp
 .history
 dist
 /.idea/*
+/.idea
+/.idea/workspace.xml
 /*.iml
 /out
 /.idea_modules
@@ -13,3 +15,4 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+.DS_Store
