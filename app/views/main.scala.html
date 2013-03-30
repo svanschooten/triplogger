@@ -25,9 +25,24 @@
             <div class="navbar-inner">
                 <img src=@routes.Assets.at("images/logo.png") class="muted pull-right"/>
                 <ul class="nav">
-                    <li class="active"><a href="/">Log</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/stats">Statistics</a></li>
+                    @page
+                    @if(page == "index") {
+                        <li class="active"><a href=@routes.Application.index()>Log</a></li>
+                    } else {
+                        <li><a href=@routes.Application.index()>Log</a></li>
+                    }
+
+                    @if(page == "index") {
+                    <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
+                    } else {
+                    <li><a href=@routes.Application.profile()>Profile</a></li>
+                    }
+
+                    @if(page == "index") {
+                    <li class="active"><a href=@routes.Application.stats()>Statistics</a></li>
+                    } else {
+                    <li><a href=@routes.Application.stats()>Statistics</a></li>
+                    }
                 </ul>
             </div>
         </div>
