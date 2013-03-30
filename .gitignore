@@ -6,7 +6,6 @@ tmp
 .history
 dist
 /.idea/*
-/.idea
 /.idea/workspace.xml
 /*.iml
 /out
