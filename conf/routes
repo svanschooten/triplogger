@@ -4,8 +4,14 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST    /login                      controllers.Application.logIn()
+GET     /login                      controllers.Application.login()
+GET     /signup                     controllers.Application.signup()
+GET     /logout                     controllers.Application.logout()
+POST    /login                      controllers.Application.authenticate()
+POST    /adduser                    controllers.Application.adduser()
 POST    /addtrip                    controllers.Application.addTrip()
+POST    /adddrug                    controllers.Application.addDrug()
+POST    /addmeasure                 controllers.Application.addMeasure()
 GET     /local/addtrip              controllers.Application.addLocalTrip()
 POST    /deleteTrip/:id             controllers.Application.deleteTrip(id: Integer)
 GET     /login/:user&:pw            controllers.Application.autoLogIn(user: String, pw: String)

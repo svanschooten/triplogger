@@ -28,6 +28,11 @@ public class Measure extends Model{
 
     public static Finder<Integer, Measure> find = new Finder(Integer.class, Measure.class);
 
+    public Measure(String name, String display) {
+        this.name = name;
+        this.display = display;
+    }
+
     public static void create(Measure measure) {
         measure.save();
     }
@@ -38,5 +43,9 @@ public class Measure extends Model{
 
     public static List<Measure> all(){
         return find.all();
+    }
+
+    public static Measure findName(String name){
+        return find.where().eq("name", name).findUnique();
     }
 }

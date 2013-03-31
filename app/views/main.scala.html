@@ -23,7 +23,7 @@
 
         <div class="navbar">
             <div class="navbar-inner">
-                <img src=@routes.Assets.at("images/logo.png") class="muted pull-right"/>
+
                 <ul class="nav">
                     @if(page == "index") {
                         <li class="active"><a href=@routes.Application.index()>Log</a></li>
@@ -43,6 +43,7 @@
                     <li><a href=@routes.Application.stats()>Statistics</a></li>
                     }
                 </ul>
+                <img src=@routes.Assets.at("images/logo.png") class="muted pull-right"/>
             </div>
         </div>
     </header><!-- /header -->

@@ -20,17 +20,20 @@ create table measure (
 create table trip (
   tid                       integer not null,
   comments                  varchar(255),
+  dfrom                     timestamp,
+  dtill                     timestamp,
   number                    integer,
   constraint pk_trip primary key (tid))
 ;
 
 create table user (
-  uid                       integer not null,
+  email                     varchar(255) not null,
+  uid                       integer,
   alias                     varchar(255),
-  email                     varchar(255),
   trippoints                integer,
   password                  varchar(255),
-  constraint pk_user primary key (uid))
+  validated                 boolean,
+  constraint pk_user primary key (email))
 ;
 
 create sequence drug_seq;

@@ -1,0 +1,19 @@
+@(form: Form[User])
+
+@main("index") {
+@helper.form(routes.Application.adduser) {
+<div class="text-center" >
+    <h1>Sign in</h1>
+    @if(flash.contains("error")) {
+    <p class="text-error">
+        @flash.get("error")
+    </p>
+    }
+
+<input class="span2" type="text" name="alias" placeholder="Alias" value="@form("alias").value"></br>
+    <input class="span2" type="email" name="email" placeholder="Email" value="@form("email").value"></br>
+<input class="span2" type="password" name="password" placeholder="Password"></br>
+<input type="submit" value="Sign Up!" class="btn btn-primary"></br></br>
+    </div>
+}
+        }

@@ -29,6 +29,11 @@ public class Drug extends Model{
     public String name;
     public String erowid;
 
+    public Drug(String name, String erowid) {
+        this.name = name;
+        this.erowid = erowid;
+    }
+
     public static void create(Drug drug) {
         drug.save();
     }
