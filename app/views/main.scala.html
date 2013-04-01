@@ -16,8 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href=@routes.Assets.at("stylesheets/style.css") rel='stylesheet' />
     <link href=@routes.Assets.at("stylesheets/bootstrap.css") rel='stylesheet' />
+    <link href=@routes.Assets.at("stylesheets/bootstrap-responsive.css") rel='stylesheet' />
 </head>
-<body>
+<body onload="setAlert()">
 <div class="container-narrow" id='container'>
     <header>
 
@@ -60,11 +61,35 @@
         </div>
     </header><!-- /header -->
     <div id='main' class="well" role='main'>
-        @if(flash.contains("success")) {
-        <p class="text-error">
-            @flash.get("success")
-        </p>
+        @if(session.contains("success")) {
+        <div class="alert alert-success">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <strong>Success!</strong>  @session.get("success")
+            @session.remove("success")
+        </div>
         }
+        @if(session.contains("error")) {
+        <div class="alert alert-error">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <strong>Error!</strong>  @session.get("error")
+            @session.remove("error")
+        </div>
+        }
+        @if(session.contains("info")) {
+        <div class="alert alert-info">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <strong>Info!</strong>  @session.get("info")
+            @session.remove("info")
+        </div>
+        }
+        @if(session.contains("warning")) {
+        <div class="alert">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <strong>Warning!</strong>  @session.get("warning")
+            @session.remove("warning")
+        </div>
+        }
+
         @content
     </div><!-- /main -->
     <footer class="well well-small"><p>&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->
@@ -73,7 +98,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src=@routes.Assets.at("javascripts/bootstrap.js")></script>
-<script src=@routes.Assets.at("javascripts//modernizr-2.0.6.min.js")></script>
+<script src=@routes.Assets.at("javascripts/modernizr-2.0.6.min.js")></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
     window.jQuery || document.write("<script src='javascripts/jquery-1.6.2.min.js'>\x3C/script>")

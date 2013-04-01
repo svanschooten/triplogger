@@ -47,10 +47,12 @@ public class Application extends Controller{
         if(u != null){
             session().clear();
             session("alias", u.alias);
+            session("success", "You've successfully logged in!");
             return redirect(
                     routes.Application.index()
             );
         } else {
+            session("error", "Invalid user or password");
             Form<Login> loginForm = Form.form(Login.class);
             return badRequest(login.render(loginForm));
         }
@@ -115,7 +117,7 @@ public class Application extends Controller{
 
     public static Result logout() {
         session().clear();
-        flash("success", "You've been logged out");
+        session("info", "You're now logged out.");
         return redirect(
                 routes.Application.login()
         );
@@ -129,16 +131,16 @@ public class Application extends Controller{
     public static Result adduser() {
         Form<User> signupForm = Form.form(User.class).bindFromRequest();
         if (signupForm.hasErrors()) {
-            flash("error", "Registration did not complete, please try again!");
+            session("error", "Registration did not complete, please try again!");
             return badRequest(signup.render(signupForm));
         } else {
             session().clear();
             User u = new User(signupForm.get().alias, signupForm.get().email, signupForm.get().password);
             if(User.find.where().eq("email", u.email).findUnique() != null) {
-                flash("error", "Registration did not complete, email is already in use!");
+                session("error", "Registration did not complete, email is already in use!");
                 return badRequest(signup.render(signupForm));
             } else if(User.find.where().eq("alias", u.alias).findUnique() != null) {
-                flash("error", "Registration did not complete, alias is already in use!");
+                session("error", "Registration did not complete, alias is already in use!");
                 return badRequest(signup.render(signupForm));
             } else{
                 User.create(u);
@@ -149,7 +151,7 @@ public class Application extends Controller{
                         "<a href=\"localhost:9000" + routes.Application.userValidate(vr.token) + "\" >" +
                                 routes.Application.userValidate(vr.token) + "</a>");
                 //TODO send mail with authentification link -> actual link + routes.Application.userValidate/vr.token
-                flash("success", "You've been registered, now validate your email!");
+                session("success", "You've been registered, now validate your email!");
                 return redirect(
                         routes.Application.index()
                 );
@@ -163,17 +165,19 @@ public class Application extends Controller{
             return badRequest(views.html.p404.render());
         } else {
             vr.validate();
-            flash("success", "User validated, you can now log in!");
+            session("success", "User validated, you can now log in!");
             return redirect(
                     routes.Application.index()
             );
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result advancedtrip() {
         return ok(views.html.advancedTrip.render());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result buddylist() {
         return ok(views.html.buddyList.render());
     }

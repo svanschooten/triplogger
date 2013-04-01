@@ -52,6 +52,13 @@ public class TripRequest extends Model {
     }
 
     public void accept() {
-         //TODO implement triprequest accepting method.
+        from = User.findById(fromId);
+        target = User.findById(targetId);
+        trip = Trip.findById(tripId);
+        trip.addBuddy(target);
+        Trip buddyTrip = new Trip(target, trip.drug, trip.dfrom, trip.dtill, trip.number, trip.measure, trip.comments);
+        buddyTrip.addBuddy(from);
+        buddyTrip.save();
+        this.delete();
     }
 }

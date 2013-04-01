@@ -1,9 +1,8 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import play.libs.Crypto;
@@ -29,7 +28,11 @@ public class User extends Model{
 
     public int trippoints;
     public String password;
+
+    @OneToMany(cascade= CascadeType.ALL)
     public ArrayList<Trip> trips;
+
+    @OneToMany(cascade=CascadeType.ALL)
     public ArrayList<User> buddies;
     public boolean validated;
 
@@ -39,6 +42,7 @@ public class User extends Model{
         this.password = Crypto.encryptAES(password);
         trippoints = 0;
         trips = new ArrayList<>();
+        buddies = new ArrayList<>();
         validated = false;
     }
 
@@ -63,18 +67,25 @@ public class User extends Model{
         return find.where().eq("alias", alias).findUnique();
     }
 
+    public static List<User> findLikeAlias(String alias){
+        return find.where().ilike("alias", alias).findList();
+    }
+
     public static User findByEmail(String email){
         return find.where().eq("email", email).findUnique();
     }
 
     public void addTrip(Trip trip){
-        trip.addBuddy(this);
-        trips.add(trip);
-        create(this);
+        if(!trips.contains(trip.tid)) {
+            trips.add(trip);
+            create(this);
+        }
     }
 
     public void addBuddy(User u) {
-
+        if(!buddies.contains(u)) {
+            BuddyRequest.create(new BuddyRequest(this, u));
+        }
     }
 
     public void addPoints(int p) {

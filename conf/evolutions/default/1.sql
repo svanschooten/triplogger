@@ -26,10 +26,13 @@ create table measure (
 
 create table trip (
   tid                       integer not null,
+  tripper_id                integer,
   comments                  varchar(255),
+  drug_did                  integer,
   dfrom                     timestamp,
   dtill                     timestamp,
   number                    integer,
+  measure_mid               integer,
   constraint pk_trip primary key (tid))
 ;
 
@@ -72,6 +75,10 @@ create sequence user_seq;
 
 create sequence validate_request_seq;
 
+alter table trip add constraint fk_trip_drug_1 foreign key (drug_did) references drug (did) on delete restrict on update restrict;
+create index ix_trip_drug_1 on trip (drug_did);
+alter table trip add constraint fk_trip_measure_2 foreign key (measure_mid) references measure (mid) on delete restrict on update restrict;
+create index ix_trip_measure_2 on trip (measure_mid);
 
 
 
