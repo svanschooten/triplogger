@@ -26,15 +26,21 @@
 
                 <ul class="nav">
                     @if(page == "index") {
-                        <li class="active"><a href=@routes.Application.index()>Log</a></li>
+                        <li class="active"><a href=@routes.Application.index()>Home</a></li>
                     } else {
-                        <li><a href=@routes.Application.index()>Log</a></li>
+                        <li><a href=@routes.Application.index()>Home</a></li>
                     }
 
-                    @if(page == "profile") {
-                    <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
+                    @if(page == "trip") {
+                    <li class="active"><a href=@routes.Application.advancedtrip()>Trip</a></li>
                     } else {
-                    <li><a href=@routes.Application.profile()>Profile</a></li>
+                    <li><a href=@routes.Application.advancedtrip()>Trip</a></li>
+                    }
+
+                    @if(page == "buddy") {
+                    <li class="active"><a href=@routes.Application.buddylist()>Buddy's</a></li>
+                    } else {
+                    <li><a href=@routes.Application.buddylist()>Buddy's</a></li>
                     }
 
                     @if(page == "stats") {
@@ -42,8 +48,14 @@
                     } else {
                     <li><a href=@routes.Application.stats()>Statistics</a></li>
                     }
+
+                    @if(page == "profile") {
+                    <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
+                    } else {
+                    <li><a href=@routes.Application.profile()>Profile</a></li>
+                    }
                 </ul>
-                <img src=@routes.Assets.at("images/logo.png") class="muted pull-right"/>
+                <a href=@routes.Application.index() class="muted pull-right"><img src=@routes.Assets.at("images/logo.png") /></a>
             </div>
         </div>
     </header><!-- /header -->

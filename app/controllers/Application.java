@@ -169,4 +169,12 @@ public class Application extends Controller{
             );
         }
     }
+
+    public static Result advancedtrip() {
+        return ok(views.html.advancedTrip.render());
+    }
+
+    public static Result buddylist() {
+        return ok(views.html.buddyList.render());
+    }
 }

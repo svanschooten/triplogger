@@ -21,13 +21,17 @@ public class BuddyRequest extends Model {
     public int brid;
 
     public User from;
+    public int fromId;
     public User target;
+    public int targetId;
 
     public static Finder<Integer, BuddyRequest> find = new Finder(Integer.class, BuddyRequest.class);
 
     public BuddyRequest(User me, User him) {
         this.from = me;
+        this.fromId = from.uid;
         this.target = him;
+        this.targetId = target.uid;
     }
 
     public static void create(BuddyRequest br){
@@ -47,6 +51,8 @@ public class BuddyRequest extends Model {
     }
 
     public void accept() {
+        from = User.findById(fromId);
+        target = User.findById(targetId);
         from.addBuddy(target);
         from.save();
         target.addBuddy(from);
