@@ -1,2 +1,4 @@
 require:
+    - play 1.2
+    - com.google.guava -> guava r07
     - play -> secure

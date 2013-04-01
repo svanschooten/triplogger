@@ -1,9 +1,6 @@
 package controllers;
 
-import models.Drug;
-import models.Measure;
-import models.Trip;
-import models.User;
+import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.*;
@@ -17,7 +14,6 @@ public class Application extends Controller{
         public String password;
 
         public String validate() {
-            System.out.println("Logging in: " + alias + " " + password);
             if(User.authenticate(alias, password) == null) {
                 return "Invalid user or password";
             }
@@ -28,30 +24,25 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        System.out.println("index");
         return ok(index.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result profile() {
-        System.out.println("profile");
         return ok(profile.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result stats() {
-        System.out.println("stats");
         return ok(stats.render());
     }
 
     public static Result login() {
         User.init();
-        System.out.println("login");
         return ok(login.render(Form.form(Login.class)));
     }
 
     public static Result autoLogIn(String user , String pw) {
-        System.out.println("autologin:" + user + " " + pw );
         User u = User.authenticate(user, pw);
         if(u != null){
             session().clear();
@@ -143,8 +134,36 @@ public class Application extends Controller{
         } else {
             session().clear();
             User u = new User(signupForm.get().alias, signupForm.get().email, signupForm.get().password);
-            User.create(u);
-            flash("success", "You've been registered, now validate your email!");
+            if(User.find.where().eq("email", u.email).findUnique() != null) {
+                flash("error", "Registration did not complete, email is already in use!");
+                return badRequest(signup.render(signupForm));
+            } else if(User.find.where().eq("alias", u.alias).findUnique() != null) {
+                flash("error", "Registration did not complete, alias is already in use!");
+                return badRequest(signup.render(signupForm));
+            } else{
+                User.create(u);
+                ValidateRequest vr = new ValidateRequest(u);
+                ValidateRequest.create(vr);
+                Mailer.mailTo("Account creation for Triplogger", u.email, "noreply Triplogger <noreply@triplogger.com>", "",
+                        "<p>Your account has been created, please verify with the following url:</p></br>" +
+                        "<a href=\"localhost:9000" + routes.Application.userValidate(vr.token) + "\" >" +
+                                routes.Application.userValidate(vr.token) + "</a>");
+                //TODO send mail with authentification link -> actual link + routes.Application.userValidate/vr.token
+                flash("success", "You've been registered, now validate your email!");
+                return redirect(
+                        routes.Application.index()
+                );
+            }
+        }
+    }
+
+    public static Result userValidate(String token) {
+        ValidateRequest vr = ValidateRequest.findRequest(token);
+        if(vr == null || vr.targetId < 0) {
+            return badRequest(views.html.p404.render());
+        } else {
+            vr.validate();
+            flash("success", "User validated, you can now log in!");
             return redirect(
                     routes.Application.index()
             );

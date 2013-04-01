@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +20,17 @@ import play.libs.Crypto;
 public class User extends Model{
 
     public static Finder<Integer, User> find = new Finder(Integer.class, User.class);
-    public int uid;
-    public String alias;
 
     @Id
+    @GeneratedValue
+    public int uid;
+    public String alias;
     public String email;
 
     public int trippoints;
     public String password;
     public ArrayList<Trip> trips;
+    public ArrayList<User> buddies;
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -52,10 +55,26 @@ public class User extends Model{
         }
     }
 
+    public static User findById(int id){
+        return find.where().eq("uid", id).findUnique();
+    }
+
+    public static User findByAlias(String alias){
+        return find.where().eq("alias", alias).findUnique();
+    }
+
+    public static User findByEmail(String email){
+        return find.where().eq("email", email).findUnique();
+    }
+
     public void addTrip(Trip trip){
         trip.addBuddy(this);
         trips.add(trip);
         create(this);
+    }
+
+    public void addBuddy(User u) {
+
     }
 
     public void addPoints(int p) {

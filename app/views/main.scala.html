@@ -48,6 +48,11 @@
         </div>
     </header><!-- /header -->
     <div id='main' class="well" role='main'>
+        @if(flash.contains("success")) {
+        <p class="text-error">
+            @flash.get("success")
+        </p>
+        }
         @content
     </div><!-- /main -->
     <footer class="well well-small"><p>&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->

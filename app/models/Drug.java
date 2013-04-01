@@ -4,6 +4,7 @@ package models;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
 @Entity
 public class Drug extends Model{
 
+
+    @GeneratedValue
     @Id
     public int did;
 

@@ -18,6 +18,8 @@ import play.data.validation.Constraints.*;
 @Entity
 public class Trip extends Model{
 
+
+    @GeneratedValue
     @Id
     public Integer tid;
 

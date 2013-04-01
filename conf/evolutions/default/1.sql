@@ -3,6 +3,11 @@
 
 # --- !Ups
 
+create table buddy_request (
+  brid                      integer not null,
+  constraint pk_buddy_request primary key (brid))
+;
+
 create table drug (
   did                       integer not null,
   name                      varchar(255),
@@ -27,14 +32,23 @@ create table trip (
 ;
 
 create table user (
-  email                     varchar(255) not null,
-  uid                       integer,
+  uid                       integer not null,
   alias                     varchar(255),
+  email                     varchar(255),
   trippoints                integer,
   password                  varchar(255),
   validated                 boolean,
-  constraint pk_user primary key (email))
+  constraint pk_user primary key (uid))
 ;
+
+create table validate_request (
+  vrid                      integer not null,
+  target_id                 integer,
+  token                     varchar(255),
+  constraint pk_validate_request primary key (vrid))
+;
+
+create sequence buddy_request_seq;
 
 create sequence drug_seq;
 
@@ -44,12 +58,16 @@ create sequence trip_seq;
 
 create sequence user_seq;
 
+create sequence validate_request_seq;
+
 
 
 
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
+
+drop table if exists buddy_request;
 
 drop table if exists drug;
 
@@ -59,7 +77,11 @@ drop table if exists trip;
 
 drop table if exists user;
 
+drop table if exists validate_request;
+
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists buddy_request_seq;
 
 drop sequence if exists drug_seq;
 
@@ -68,4 +90,6 @@ drop sequence if exists measure_seq;
 drop sequence if exists trip_seq;
 
 drop sequence if exists user_seq;
+
+drop sequence if exists validate_request_seq;
 
