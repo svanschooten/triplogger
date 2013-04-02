@@ -1,11 +1,8 @@
 package controllers;
 
-import models.BuddyLink;
 import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +16,9 @@ public class Test extends Controller {
     public static Result testBuddy() {
         List<User> users = User.all();
         for(User u : users){
-            List<BuddyLink> budds = BuddyLink.findBuddies(u);
-            u.buddies = new ArrayList<>();
-            for(BuddyLink bl : budds){
-                u.buddies.add(User.findById(bl.buddyId));
-            }
+            u = User.addBuddies(u);
         }
-        return ok(views.html.test.render(users));
+        return ok(views.html.testBuddies.render(users));
     }
 
     public static Result testAddTrip() {

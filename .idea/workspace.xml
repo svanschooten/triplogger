@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="519ee696-d21b-49bf-8115-9bccb17b8259" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\workspace\play\triplogger\app\models\BuddyRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\play\triplogger\public\javascripts\jquery-1.6.2.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\play\triplogger\public\javascripts\jquery-1.6.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\play\triplogger\public\javascripts\jquery-1.9.0.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\play\triplogger\public\stylesheets\bootstrap-responsive.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Application.java" afterPath="$PROJECT_DIR$/app/controllers/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Trip.java" afterPath="$PROJECT_DIR$/app/models/Trip.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Test.java" afterPath="$PROJECT_DIR$/app/controllers/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/User.java" afterPath="$PROJECT_DIR$/app/models/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bootstrap.js" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/index.scala.html" afterPath="$PROJECT_DIR$/app/views/index.scala.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/login.scala.html" afterPath="$PROJECT_DIR$/app/views/login.scala.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.scala.html" afterPath="$PROJECT_DIR$/app/views/main.scala.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/signup.scala.html" afterPath="$PROJECT_DIR$/app/views/signup.scala.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\workspace\play\triplogger\app\views\test.scala.html" afterPath="$PROJECT_DIR$/app/views/testBuddies.scala.html" />
     </list>
     <ignored path="triplogger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,9 +24,9 @@
     <file path="/routes" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364940740822" ignored="false" />
     <file path="/Application.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364940497159" ignored="false" />
     <file path="/ValidateRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364833904495" ignored="false" />
-    <file path="/main.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364935436648" ignored="false" />
+    <file path="/main.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364943556430" ignored="false" />
     <file path="/BuddyRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364834443288" ignored="false" />
-    <file path="/User.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364939950944" ignored="false" />
+    <file path="/User.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941136689" ignored="false" />
     <file path="/TripRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364838166088" ignored="false" />
     <file path="/advancedTrip.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364835073460" ignored="false" />
     <file path="/buddyList.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364835165959" ignored="false" />
@@ -51,7 +38,8 @@
     <file path="/login.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364935257092" ignored="false" />
     <file path="/test.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364940531188" ignored="false" />
     <file path="/BuddyLink.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364939480238" ignored="false" />
-    <file path="/Test.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364940794520" ignored="false" />
+    <file path="/Test.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941296764" ignored="false" />
+    <file path="/testAddTrip.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941527485" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,28 +98,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Application.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="0" selection-start="6277" selection-end="6277" vertical-scroll-proportion="0.0">
+            <state line="114" column="65" selection-start="3326" selection-end="3326" vertical-scroll-proportion="0.7079038">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/routes">
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="66" selection-start="1545" selection-end="1558" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="183" selection-start="821" selection-end="821" vertical-scroll-proportion="0.66208476">
+            <state line="75" column="33" selection-start="2014" selection-end="2024" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -139,10 +118,57 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/routes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="58" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="47" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testAddTrip.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/testAddTrip.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-2.6153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="advancedtrip.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/advancedtrip.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testBuddies.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/testBuddies.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="186" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="47" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+            <state line="50" column="0" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,18 +177,18 @@
       <file leaf-file-name="main.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="75" selection-start="3296" selection-end="3296" vertical-scroll-proportion="-41.846153">
+            <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="-14.269231">
               <folding>
-                <marker date="1364935436830" expanded="true" signature="5404:5502" placeholder="..." />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.scala.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="33" vertical-scroll-proportion="-0.0">
+            <state line="36" column="65" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -186,22 +212,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/buddyList.scala.html" />
         <option value="$PROJECT_DIR$/app/models/TripRequest.java" />
         <option value="$PROJECT_DIR$/public/javascripts/script.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
         <option value="$PROJECT_DIR$/app/views/signup.scala.html" />
         <option value="$PROJECT_DIR$/app/views/index.scala.html" />
         <option value="$PROJECT_DIR$/app/views/login.scala.html" />
-        <option value="$PROJECT_DIR$/app/views/main.scala.html" />
         <option value="$PROJECT_DIR$/app/models/Trip.java" />
-        <option value="$PROJECT_DIR$/app/models/User.java" />
         <option value="$PROJECT_DIR$/app/models/BuddyLink.java" />
         <option value="$PROJECT_DIR$/app/views/test.scala.html" />
-        <option value="$PROJECT_DIR$/app/controllers/Application.java" />
         <option value="$PROJECT_DIR$/conf/routes" />
+        <option value="$PROJECT_DIR$/app/models/User.java" />
         <option value="$PROJECT_DIR$/app/controllers/Test.java" />
+        <option value="$PROJECT_DIR$/app/views/testAddTrip.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
+        <option value="$PROJECT_DIR$/app/views/main.scala.html" />
+        <option value="$PROJECT_DIR$/app/controllers/Application.java" />
       </list>
     </option>
   </component>
@@ -269,6 +295,10 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -284,7 +314,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triplogger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triplogger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -379,8 +423,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\workspace\play\triplogger\public\stylesheets" />
       <recent name="D:\workspace\play\triplogger\app\views" />
+      <recent name="D:\workspace\play\triplogger\app\views\test" />
+      <recent name="D:\workspace\play\triplogger\public\stylesheets" />
     </key>
   </component>
   <component name="RunManager">
@@ -599,28 +644,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/javascripts/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="9" selection-start="85" selection-end="95" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19563" selection-start="19975" selection-end="19975" vertical-scroll-proportion="0.11860465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="8" selection-start="12784" selection-end="12784" vertical-scroll-proportion="-12.68" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="479" selection-end="479" vertical-scroll-proportion="-15.64" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/signup.scala.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="6" selection-start="422" selection-end="422" vertical-scroll-proportion="0.28099173">
@@ -644,26 +667,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="47" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+        <state line="50" column="0" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="75" selection-start="3296" selection-end="3296" vertical-scroll-proportion="-41.846153">
-          <folding>
-            <marker date="1364935436830" expanded="true" signature="5404:5502" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="31" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/test.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="22" selection-start="117" selection-end="117" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/TripRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="4" selection-start="321" selection-end="344" vertical-scroll-proportion="0.24284078">
@@ -690,26 +688,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+    <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="0" selection-start="6277" selection-end="6277" vertical-scroll-proportion="0.0">
+        <state line="26" column="58" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/routes">
+    <entry file="file://$PROJECT_DIR$/app/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="66" selection-start="1545" selection-end="1558" vertical-scroll-proportion="0.0">
+        <state line="75" column="33" selection-start="2014" selection-end="2024" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/measureForm.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="183" selection-start="821" selection-end="821" vertical-scroll-proportion="0.66208476">
+        <state line="27" column="47" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/testBuddies.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="186" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/testAddTrip.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-2.6153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/advancedtrip.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="65" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="-14.269231">
+          <folding>
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="65" selection-start="3326" selection-end="3326" vertical-scroll-proportion="0.7079038">
+          <folding />
         </state>
       </provider>
     </entry>

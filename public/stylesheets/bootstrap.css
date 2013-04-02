@@ -11,6 +11,18 @@
 	background-color: #f0f1f2;
 }
 
+/* Add top padding for navbar-top-fixed */
+        body {
+        padding-top: 80px;
+        padding-bottom: 40px;
+        }
+        /* Remove top padding when top navbar goes static in narrow viewports */
+        @media (max-width: 979px) {
+        body {
+        padding-top: 0;
+        }
+        }
+
 footer {
 	position: fixed;
 	bottom: 0;

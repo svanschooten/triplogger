@@ -112,6 +112,7 @@ public class Application extends Controller{
         } else {
             session().clear();
             session("alias", loginForm.get().alias);
+            session("success", "You've successfully logged in!");
             return redirect(
                     routes.Application.index()
             );

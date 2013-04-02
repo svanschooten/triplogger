@@ -73,6 +73,15 @@ public class User extends Model{
         return find.where().eq("email", email).findUnique();
     }
 
+    public static User addBuddies(User u) {
+        List<BuddyLink> budds = BuddyLink.findBuddies(u);
+        u.buddies = new ArrayList<>();
+        for(BuddyLink bl : budds){
+            u.buddies.add(User.findById(bl.buddyId));
+        }
+        return u;
+    }
+
     public void addTrip(Trip trip){
         if(!trips.contains(trip.tid)) {
             trips.add(trip);
