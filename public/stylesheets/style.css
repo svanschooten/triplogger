@@ -348,11 +348,8 @@ header img {
 
 /* line 48, ../sass/partials/_page.scss */
 footer {
-  /*width: 100%;*/
   height: 40px;
   background-color: #bababa;
-  position: absolute;
-  bottom: 0;
 }
 /* line 54, ../sass/partials/_page.scss */
 footer p {

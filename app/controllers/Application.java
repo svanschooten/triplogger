@@ -5,6 +5,9 @@ import play.data.*;
 import play.mvc.*;
 import views.html.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Application extends Controller{
 
@@ -181,4 +184,6 @@ public class Application extends Controller{
     public static Result buddylist() {
         return ok(views.html.buddyList.render());
     }
+
+
 }

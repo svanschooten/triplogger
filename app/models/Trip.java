@@ -31,6 +31,7 @@ public class Trip extends Model{
     public int tripperId;
 
     @OneToMany(cascade=CascadeType.ALL)
+    @Column
     public ArrayList<Integer> withBuddy;
 
     public String comments;

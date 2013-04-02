@@ -14,53 +14,64 @@
     <meta content='A logging web application for all your trips.' name='description' />
     <meta content='The MAKETEK guys' name='author' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href=@routes.Assets.at("stylesheets/style.css") rel='stylesheet' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src=@routes.Assets.at("javascripts/modernizr-2.0.6.min.js")></script>
     <link href=@routes.Assets.at("stylesheets/bootstrap.css") rel='stylesheet' />
-    <link href=@routes.Assets.at("stylesheets/bootstrap-responsive.css") rel='stylesheet' />
 </head>
-<body onload="setAlert()">
-<div class="container-narrow" id='container'>
-    <header>
+<body onload="setAlert()" >
 
-        <div class="navbar">
-            <div class="navbar-inner">
+    <div class="navbar" id="header">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a href=@routes.Application.index() class="brand"  style="margin:-10px;"><img src=@routes.Assets.at("images/logo.png") /></a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
 
-                <ul class="nav">
-                    @if(page == "index") {
-                        <li class="active"><a href=@routes.Application.index()>Home</a></li>
-                    } else {
-                        <li><a href=@routes.Application.index()>Home</a></li>
-                    }
+                        @if(session.contains("alias")) {
+                            @if(page == "index") {
+                                <li class="active"><a href=@routes.Application.index()>Home</a></li>
+                            } else {
+                                <li><a href=@routes.Application.index()>Home</a></li>
+                            }
 
-                    @if(page == "trip") {
-                    <li class="active"><a href=@routes.Application.advancedtrip()>Trip</a></li>
-                    } else {
-                    <li><a href=@routes.Application.advancedtrip()>Trip</a></li>
-                    }
+                            @if(page == "trip") {
+                                <li class="active"><a href=@routes.Application.advancedtrip()>Trip</a></li>
+                            } else {
+                                <li><a href=@routes.Application.advancedtrip()>Trip</a></li>
+                            }
 
-                    @if(page == "buddy") {
-                    <li class="active"><a href=@routes.Application.buddylist()>Buddy's</a></li>
-                    } else {
-                    <li><a href=@routes.Application.buddylist()>Buddy's</a></li>
-                    }
+                            @if(page == "buddy") {
+                                <li class="active"><a href=@routes.Application.buddylist()>Buddy's</a></li>
+                            } else {
+                                <li><a href=@routes.Application.buddylist()>Buddy's</a></li>
+                            }
 
-                    @if(page == "stats") {
-                    <li class="active"><a href=@routes.Application.stats()>Statistics</a></li>
-                    } else {
-                    <li><a href=@routes.Application.stats()>Statistics</a></li>
-                    }
+                            @if(page == "stats") {
+                                <li class="active"><a href=@routes.Application.stats()>Statistics</a></li>
+                            } else {
+                                <li><a href=@routes.Application.stats()>Statistics</a></li>
+                            }
 
-                    @if(page == "profile") {
-                    <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
-                    } else {
-                    <li><a href=@routes.Application.profile()>Profile</a></li>
-                    }
-                </ul>
-                <a href=@routes.Application.index() class="muted pull-right"><img src=@routes.Assets.at("images/logo.png") /></a>
+                            @if(page == "profile") {
+                                <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
+                            } else {
+                                <li><a href=@routes.Application.profile()>Profile</a></li>
+                            }
+                            <li><a href=@routes.Application.logout()>Logout</a></li>
+                        }
+
+                    </ul>
+                </div>
             </div>
         </div>
-    </header><!-- /header -->
-    <div id='main' class="well" role='main'>
+    </div><!-- /header -->
+    <div class="row-fluid" id='container'>
+    <div id='main' class="well span8 offset2" role='main'>
         @if(session.contains("success")) {
         <div class="alert alert-success">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -91,17 +102,16 @@
         }
 
         @content
-    </div><!-- /main -->
-    <footer class="well well-small"><p>&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->
-</div><!-- /container -->
+    </div> <!-- /main -->
+    </div>  <!-- /container -->
+<footer><p class="text-center">&copy; TRIPlogger 2013 by MAKETEK</p></footer><!-- /footer -->
+
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src=@routes.Assets.at("javascripts/bootstrap.js")></script>
-<script src=@routes.Assets.at("javascripts/modernizr-2.0.6.min.js")></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src=@routes.Assets.at("javascripts/bootstrap-min.js")></script>
 <script>
-    window.jQuery || document.write("<script src='javascripts/jquery-1.6.2.min.js'>\x3C/script>")
+    window.jQuery || document.write("<script src='javascripts/jquery-1.9.1.js'>\x3C/script>")
 </script>
     <script src=@routes.Assets.at("javascripts/plugins.js")></script>
     <script src=@routes.Assets.at("javascripts/script.js")></script>

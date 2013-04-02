@@ -3,11 +3,12 @@
 
 # --- !Ups
 
-create table buddy_request (
-  brid                      integer not null,
-  from_id                   integer,
-  target_id                 integer,
-  constraint pk_buddy_request primary key (brid))
+create table buddy_link (
+  blid                      integer not null,
+  user_id                   integer,
+  buddy_id                  integer,
+  validated                 boolean,
+  constraint pk_buddy_link primary key (blid))
 ;
 
 create table drug (
@@ -61,7 +62,7 @@ create table validate_request (
   constraint pk_validate_request primary key (vrid))
 ;
 
-create sequence buddy_request_seq;
+create sequence buddy_link_seq;
 
 create sequence drug_seq;
 
@@ -86,7 +87,7 @@ create index ix_trip_measure_2 on trip (measure_mid);
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists buddy_request;
+drop table if exists buddy_link;
 
 drop table if exists drug;
 
@@ -102,7 +103,7 @@ drop table if exists validate_request;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists buddy_request_seq;
+drop sequence if exists buddy_link_seq;
 
 drop sequence if exists drug_seq;
 

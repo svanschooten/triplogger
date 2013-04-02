@@ -29,11 +29,9 @@ public class User extends Model{
     public int trippoints;
     public String password;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    public ArrayList<Trip> trips;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    public ArrayList<User> buddies;
+    public ArrayList<Trip> trips = new ArrayList<>();
+    public ArrayList<User> buddies = new ArrayList<>();
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -41,21 +39,21 @@ public class User extends Model{
         this.email = email;
         this.password = Crypto.encryptAES(password);
         trippoints = 0;
-        trips = new ArrayList<>();
-        buddies = new ArrayList<>();
         validated = false;
     }
 
     public static void init() {
-        if(authenticate("svsoke", "password")== null) {
-            User user = new User("svsoke", "svsoke@hotmail.com", "password");
-            user.validated = true;
-            create(user);
-        }
-        if(authenticate("mcawesome", "password")== null) {
-            User user = new User("mcawesome", "elgar.groot@gmail.com", "password");
-            user.validated = true;
-            create(user);
+        if(authenticate("svsoke", "password")== null && authenticate("mcawesome", "password")== null) {
+            User stijn = new User("svsoke", "svsoke@hotmail.com", "password");
+            User elgar = new User("mcawesome", "elgar.groot@gmail.com", "password");
+            stijn.validated = true;
+            elgar.validated = true;
+            create(stijn);
+            create(elgar);
+            BuddyLink bl = new BuddyLink(stijn, elgar);
+            bl.setValidated();
+            BuddyLink.create(bl);
+
         }
     }
 
@@ -83,8 +81,8 @@ public class User extends Model{
     }
 
     public void addBuddy(User u) {
-        if(!buddies.contains(u)) {
-            BuddyRequest.create(new BuddyRequest(this, u));
+        if(BuddyLink.exists(this, u) == null) {
+            BuddyLink.create(new BuddyLink(this, u));
         }
     }
 
