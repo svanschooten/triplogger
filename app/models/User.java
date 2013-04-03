@@ -1,8 +1,8 @@
 package models;
 
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import play.libs.Crypto;
@@ -19,15 +19,20 @@ import play.libs.Crypto;
 public class User extends Model{
 
     public static Finder<Integer, User> find = new Finder(Integer.class, User.class);
-    public int uid;
-    public String alias;
 
     @Id
+    @GeneratedValue
+    public int uid;
+    public String alias;
     public String email;
 
     public int trippoints;
     public String password;
-    public ArrayList<Trip> trips;
+
+
+    public ArrayList<Trip> trips = new ArrayList<>();
+    public ArrayList<User> buddies = new ArrayList<>();
+    public ArrayList<User> pendingBuddies = new ArrayList<>();
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -35,27 +40,77 @@ public class User extends Model{
         this.email = email;
         this.password = Crypto.encryptAES(password);
         trippoints = 0;
-        trips = new ArrayList<>();
         validated = false;
     }
 
     public static void init() {
-        if(authenticate("svsoke", "password")== null) {
-            User user = new User("svsoke", "svsoke@hotmail.com", "password");
-            user.validated = true;
-            create(user);
-        }
-        if(authenticate("mcawesome", "password")== null) {
-            User user = new User("mcawesome", "elgar.groot@gmail.com", "password");
-            user.validated = true;
-            create(user);
+        if(authenticate("svsoke", "password")== null && authenticate("mcawesome", "password")== null) {
+            User stijn = new User("svsoke", "svsoke@hotmail.com", "password");
+            User elgar = new User("mcawesome", "elgar.groot@gmail.com", "password");
+            stijn.validated = true;
+            elgar.validated = true;
+            create(stijn);
+            create(elgar);
+            BuddyLink bl = new BuddyLink(stijn, elgar);
+            bl.setValidated();
+            BuddyLink.create(bl);
+
         }
     }
 
+    public void setBuddies(ArrayList<User> buddyList) {
+        this.buddies = buddyList;
+    }
+
+    public void setPendingBuddies(ArrayList<User> buddyList) {
+        this.pendingBuddies = buddyList;
+    }
+
+    public static User findById(int id){
+        return find.where().eq("uid", id).findUnique();
+    }
+
+    public static User findByAlias(String alias){
+        return find.where().eq("alias", alias).findUnique();
+    }
+
+    public static List<User> findLikeAlias(String alias){
+        return find.where().ilike("alias", alias).findList();
+    }
+
+    public static User findByEmail(String email){
+        return find.where().eq("email", email).findUnique();
+    }
+
+    public static ArrayList<User> getBuddies(User u) {
+        List<BuddyLink> budds = BuddyLink.findBuddies(u);
+        ArrayList<User> buddies = new ArrayList<>();
+        for(BuddyLink bl : budds){
+            buddies.add(User.findById(bl.buddyId));
+        }
+        return buddies;
+    }
+
+    public static ArrayList<User> getPendingBuddies(User u) {
+        List<BuddyLink> budds = BuddyLink.findPendingBuddies(u);
+        ArrayList<User> buddies = new ArrayList<>();
+        for(BuddyLink bl : budds){
+            buddies.add(User.findById(bl.buddyId));
+        }
+        return buddies;
+    }
+
     public void addTrip(Trip trip){
-        trip.addBuddy(this);
-        trips.add(trip);
-        create(this);
+        if(!trips.contains(trip.tid)) {
+            trips.add(trip);
+            create(this);
+        }
+    }
+
+    public void addBuddy(User u) {
+        if(BuddyLink.exists(this, u) == null) {
+            BuddyLink.create(new BuddyLink(this, u));
+        }
     }
 
     public void addPoints(int p) {

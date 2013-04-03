@@ -1,0 +1,14 @@
+@(users: List[User])
+
+@main("index") {
+
+@for(user <- users){
+    <h2>@user.alias</h2>
+    <ul>
+        @for(buddy <- user.buddies){
+        <li>@buddy.alias</li>
+        }
+    </ul>
+}
+
+}

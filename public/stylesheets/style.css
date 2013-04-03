@@ -332,7 +332,6 @@ body, select, input, textarea {
 /* line 33, ../sass/partials/_page.scss */
 header {
   width: 100%;
-  background-color: #c7e2f4;
   height: 50px;
 }
 /* line 37, ../sass/partials/_page.scss */
@@ -349,11 +348,8 @@ header img {
 
 /* line 48, ../sass/partials/_page.scss */
 footer {
-  width: 800px;
   height: 40px;
   background-color: #bababa;
-  position: absolute;
-  bottom: 0;
 }
 /* line 54, ../sass/partials/_page.scss */
 footer p {

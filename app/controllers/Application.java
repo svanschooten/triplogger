@@ -1,12 +1,12 @@
 package controllers;
 
-import models.Drug;
-import models.Measure;
-import models.Trip;
-import models.User;
+import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Application extends Controller{
@@ -17,7 +17,6 @@ public class Application extends Controller{
         public String password;
 
         public String validate() {
-            System.out.println("Logging in: " + alias + " " + password);
             if(User.authenticate(alias, password) == null) {
                 return "Invalid user or password";
             }
@@ -28,38 +27,35 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        System.out.println("index");
         return ok(index.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result profile() {
-        System.out.println("profile");
         return ok(profile.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result stats() {
-        System.out.println("stats");
         return ok(stats.render());
     }
 
     public static Result login() {
         User.init();
-        System.out.println("login");
         return ok(login.render(Form.form(Login.class)));
     }
 
     public static Result autoLogIn(String user , String pw) {
-        System.out.println("autologin:" + user + " " + pw );
         User u = User.authenticate(user, pw);
         if(u != null){
             session().clear();
             session("alias", u.alias);
+            session("success", "You've successfully logged in!");
             return redirect(
                     routes.Application.index()
             );
         } else {
+            session("error", "Invalid user or password");
             Form<Login> loginForm = Form.form(Login.class);
             return badRequest(login.render(loginForm));
         }
@@ -116,6 +112,7 @@ public class Application extends Controller{
         } else {
             session().clear();
             session("alias", loginForm.get().alias);
+            session("success", "You've successfully logged in!");
             return redirect(
                     routes.Application.index()
             );
@@ -124,7 +121,7 @@ public class Application extends Controller{
 
     public static Result logout() {
         session().clear();
-        flash("success", "You've been logged out");
+        session("info", "You're now logged out.");
         return redirect(
                 routes.Application.login()
         );
@@ -138,16 +135,56 @@ public class Application extends Controller{
     public static Result adduser() {
         Form<User> signupForm = Form.form(User.class).bindFromRequest();
         if (signupForm.hasErrors()) {
-            flash("error", "Registration did not complete, please try again!");
+            session("error", "Registration did not complete, please try again!");
             return badRequest(signup.render(signupForm));
         } else {
             session().clear();
             User u = new User(signupForm.get().alias, signupForm.get().email, signupForm.get().password);
-            User.create(u);
-            flash("success", "You've been registered, now validate your email!");
+            if(User.find.where().eq("email", u.email).findUnique() != null) {
+                session("error", "Registration did not complete, email is already in use!");
+                return badRequest(signup.render(signupForm));
+            } else if(User.find.where().eq("alias", u.alias).findUnique() != null) {
+                session("error", "Registration did not complete, alias is already in use!");
+                return badRequest(signup.render(signupForm));
+            } else{
+                User.create(u);
+                ValidateRequest vr = new ValidateRequest(u);
+                ValidateRequest.create(vr);
+                Mailer.mailTo("Account creation for Triplogger", u.email, "noreply Triplogger <noreply@triplogger.com>", "",
+                        "<p>Your account has been created, please verify with the following url:</p></br>" +
+                        "<a href=\"localhost:9000" + routes.Application.userValidate(vr.token) + "\" >" +
+                                routes.Application.userValidate(vr.token) + "</a>");
+                //TODO send mail with authentification link -> actual link + routes.Application.userValidate/vr.token
+                session("success", "You've been registered, now validate your email!");
+                return redirect(
+                        routes.Application.index()
+                );
+            }
+        }
+    }
+
+    public static Result userValidate(String token) {
+        ValidateRequest vr = ValidateRequest.findRequest(token);
+        if(vr == null || vr.targetId < 0) {
+            return badRequest(views.html.p404.render());
+        } else {
+            vr.validate();
+            session("success", "User validated, you can now log in!");
             return redirect(
                     routes.Application.index()
             );
         }
     }
+
+    @Security.Authenticated(Secured.class)
+    public static Result advancedtrip() {
+        return ok(views.html.advancedTrip.render());
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result buddylist() {
+        return ok(views.html.buddyList.render());
+    }
+
+
 }

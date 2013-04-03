@@ -2,6 +2,8 @@ package models;
 
 
 import org.joda.time.DateTime;
+import play.data.format.Formats;
+import play.data.validation.Constraints;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.*;
@@ -18,22 +20,42 @@ import play.data.validation.Constraints.*;
 @Entity
 public class Trip extends Model{
 
+
+    @GeneratedValue
     @Id
     public Integer tid;
 
     public static Finder<Integer, Trip> find = new Finder(Integer.class, Trip.class);
 
-    public ArrayList<User> withBuddy;
+    public User tripper;
+    public int tripperId;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @Column
+    //TODO nog omzetten naar nieuwe opzet.
+    public ArrayList<Integer> withBuddy;
+
     public String comments;
 
     @Required
+    @ManyToOne
     public Drug drug;
+
+    @Formats.DateTime(pattern="dd/MM/yyyy-hh:mm:ss")
     public DateTime dfrom;
+
+    @Formats.DateTime(pattern="dd/MM/yyyy-hh:mm:ss")
     public DateTime dtill;
+
+    @Constraints.Min(1)
     public int number;
+
+    @ManyToOne
     public Measure measure;
 
-    public Trip(Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
+    public Trip(User tripper, Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
+        this.tripper = tripper;
+        this.tripperId = tripper.uid;
         this.drug = drug;
         this.dfrom = from;
         this.dtill = till;
@@ -43,7 +65,9 @@ public class Trip extends Model{
         withBuddy = new ArrayList<>();
     }
 
-    public Trip(Drug drug) {
+    public Trip(User tripper, Drug drug) {
+        this.tripper = tripper;
+        this.tripperId = tripper.uid;
         this.drug = drug;
         this.dfrom = new DateTime();
         this.dtill = new DateTime();
@@ -54,10 +78,10 @@ public class Trip extends Model{
     }
 
     public void addBuddy(User user) {
-        if(!withBuddy.contains(user)){
-            withBuddy.add(user);
+        if(!withBuddy.contains(user.uid)){
+            withBuddy.add(user.uid);
         }
-        create(this);
+        this.save();
     }
 
     public static void create(Trip trip) {
@@ -70,5 +94,9 @@ public class Trip extends Model{
 
     public static List<Trip> all(){
         return find.all();
+    }
+
+    public static Trip findById(int id){
+        return find.where().eq("tid", id).findUnique();
     }
 }

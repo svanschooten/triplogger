@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,8 @@ import play.db.ebean.Model;
 @Entity
 public class Measure extends Model{
 
+
+    @GeneratedValue
     @Id
     public int mid;
 

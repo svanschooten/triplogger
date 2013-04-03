@@ -14,7 +14,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../target/scala-2.10/cache" />
       <excludeFolder url="file://$MODULE_DIR$/../target/streams" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.10.0" level="project" />
     <orderEntry type="library" name="SBT: play:play_2.10:2.1.0" level="project" />
