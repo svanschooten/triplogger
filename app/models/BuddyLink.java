@@ -44,7 +44,11 @@ public class BuddyLink extends Model{
     }
 
     public static List<BuddyLink> findBuddies(User user) {
-        return find.where().eq("userId",user.uid).findList();
+        return find.where().eq("userId",user.uid).eq("validated", true).findList();
+    }
+
+    public static List<BuddyLink> findPendingBuddies(User user) {
+        return find.where().eq("userId",user.uid).eq("validated", false).findList();
     }
 
     public static List<BuddyLink> getRequests(User user) {

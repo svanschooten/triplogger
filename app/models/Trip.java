@@ -32,6 +32,7 @@ public class Trip extends Model{
 
     @OneToMany(cascade=CascadeType.ALL)
     @Column
+    //TODO nog omzetten naar nieuwe opzet.
     public ArrayList<Integer> withBuddy;
 
     public String comments;

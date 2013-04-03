@@ -32,6 +32,7 @@ public class User extends Model{
 
     public ArrayList<Trip> trips = new ArrayList<>();
     public ArrayList<User> buddies = new ArrayList<>();
+    public ArrayList<User> pendingBuddies = new ArrayList<>();
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -57,6 +58,14 @@ public class User extends Model{
         }
     }
 
+    public void setBuddies(ArrayList<User> buddyList) {
+        this.buddies = buddyList;
+    }
+
+    public void setPendingBuddies(ArrayList<User> buddyList) {
+        this.pendingBuddies = buddyList;
+    }
+
     public static User findById(int id){
         return find.where().eq("uid", id).findUnique();
     }
@@ -73,13 +82,22 @@ public class User extends Model{
         return find.where().eq("email", email).findUnique();
     }
 
-    public static User addBuddies(User u) {
+    public static ArrayList<User> getBuddies(User u) {
         List<BuddyLink> budds = BuddyLink.findBuddies(u);
-        u.buddies = new ArrayList<>();
+        ArrayList<User> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
-            u.buddies.add(User.findById(bl.buddyId));
+            buddies.add(User.findById(bl.buddyId));
         }
-        return u;
+        return buddies;
+    }
+
+    public static ArrayList<User> getPendingBuddies(User u) {
+        List<BuddyLink> budds = BuddyLink.findPendingBuddies(u);
+        ArrayList<User> buddies = new ArrayList<>();
+        for(BuddyLink bl : budds){
+            buddies.add(User.findById(bl.buddyId));
+        }
+        return buddies;
     }
 
     public void addTrip(Trip trip){

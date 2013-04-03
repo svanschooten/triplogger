@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="519ee696-d21b-49bf-8115-9bccb17b8259" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Application.java" afterPath="$PROJECT_DIR$/app/controllers/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/BuddyLink.java" afterPath="$PROJECT_DIR$/app/models/BuddyLink.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Test.java" afterPath="$PROJECT_DIR$/app/controllers/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Trip.java" afterPath="$PROJECT_DIR$/app/models/Trip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/User.java" afterPath="$PROJECT_DIR$/app/models/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.scala.html" afterPath="$PROJECT_DIR$/app/views/main.scala.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspace\play\triplogger\app\views\test.scala.html" afterPath="$PROJECT_DIR$/app/views/testBuddies.scala.html" />
     </list>
     <ignored path="triplogger.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364935028612" ignored="false" />
+    <file path="/Dummy.txt" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364982475289" ignored="false" />
     <file path="/application.conf" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364830072829" ignored="false" />
     <file path="/Mailer.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364813236584" ignored="false" />
     <file path="/Mail.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364811861301" ignored="false" />
@@ -26,19 +24,19 @@
     <file path="/ValidateRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364833904495" ignored="false" />
     <file path="/main.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364943556430" ignored="false" />
     <file path="/BuddyRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364834443288" ignored="false" />
-    <file path="/User.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941136689" ignored="false" />
+    <file path="/User.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364983505690" ignored="false" />
     <file path="/TripRequest.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364838166088" ignored="false" />
     <file path="/advancedTrip.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364835073460" ignored="false" />
     <file path="/buddyList.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364835165959" ignored="false" />
-    <file path="/Trip.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364939541061" ignored="false" />
+    <file path="/Trip.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364944310827" ignored="false" />
     <file path="/script.js" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364850087045" ignored="false" />
     <file path="/bootstrap.css" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364860190293" ignored="false" />
     <file path="/signup.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364860360510" ignored="false" />
     <file path="/index.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364860799713" ignored="false" />
     <file path="/login.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364935257092" ignored="false" />
     <file path="/test.scala.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364940531188" ignored="false" />
-    <file path="/BuddyLink.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364939480238" ignored="false" />
-    <file path="/Test.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941296764" ignored="false" />
+    <file path="/BuddyLink.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364982664881" ignored="false" />
+    <file path="/Test.java" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364983539531" ignored="false" />
     <file path="/testAddTrip.html" changelist="519ee696-d21b-49bf-8115-9bccb17b8259" time="1364941527485" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +52,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -88,7 +87,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -98,10 +96,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="65" selection-start="3326" selection-end="3326" vertical-scroll-proportion="0.7079038">
+            <state line="102" column="89" selection-start="2865" selection-end="2865" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.5041518">
               <folding />
             </state>
           </provider>
@@ -110,38 +117,7 @@
       <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="33" selection-start="2014" selection-end="2024" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/routes">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="58" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="47" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testAddTrip.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/testAddTrip.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-2.6153846">
+            <state line="66" column="20" selection-start="1793" selection-end="1793" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,7 +126,7 @@
       <file leaf-file-name="advancedtrip.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/advancedtrip.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,7 +135,7 @@
       <file leaf-file-name="testBuddies.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/testBuddies.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="186" vertical-scroll-proportion="-0.0">
+            <state line="10" column="39" selection-start="181" selection-end="181" vertical-scroll-proportion="-6.5384617">
               <folding />
             </state>
           </provider>
@@ -168,8 +144,28 @@
       <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="0" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+            <state line="34" column="42" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/routes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="9" selection-start="1451" selection-end="1462" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuddyLink.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/BuddyLink.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="38" selection-start="1152" selection-end="1158" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,10 +173,8 @@
       <file leaf-file-name="main.scala.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="-14.269231">
-              <folding>
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -218,24 +212,24 @@
         <option value="$PROJECT_DIR$/app/views/signup.scala.html" />
         <option value="$PROJECT_DIR$/app/views/index.scala.html" />
         <option value="$PROJECT_DIR$/app/views/login.scala.html" />
-        <option value="$PROJECT_DIR$/app/models/Trip.java" />
-        <option value="$PROJECT_DIR$/app/models/BuddyLink.java" />
         <option value="$PROJECT_DIR$/app/views/test.scala.html" />
         <option value="$PROJECT_DIR$/conf/routes" />
-        <option value="$PROJECT_DIR$/app/models/User.java" />
-        <option value="$PROJECT_DIR$/app/controllers/Test.java" />
         <option value="$PROJECT_DIR$/app/views/testAddTrip.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
         <option value="$PROJECT_DIR$/app/views/main.scala.html" />
         <option value="$PROJECT_DIR$/app/controllers/Application.java" />
+        <option value="$PROJECT_DIR$/app/models/Trip.java" />
+        <option value="$PROJECT_DIR$/app/models/BuddyLink.java" />
+        <option value="$PROJECT_DIR$/app/models/User.java" />
+        <option value="$PROJECT_DIR$/app/controllers/Test.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -263,7 +257,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -279,42 +272,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,10 +316,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -382,26 +335,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="triplogger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -418,8 +354,8 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -435,6 +371,14 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
     <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
       <module name="" />
       <setting name="path" value="" />
@@ -446,27 +390,6 @@
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
       <setting name="showProgressMessages" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -494,6 +417,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -564,7 +500,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -579,7 +515,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18036287" sideWeight="0.6006674" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17992656" sideWeight="0.6006674" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -665,42 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/BuddyLink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="37" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/TripRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="4" selection-start="321" selection-end="344" vertical-scroll-proportion="0.24284078">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/routes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="58" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="33" selection-start="2014" selection-end="2024" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -711,25 +615,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="47" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/testBuddies.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="186" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/testAddTrip.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-2.6153846">
+        <state line="4" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -741,6 +629,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="89" selection-start="2865" selection-end="2865" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Trip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="42" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="65" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
@@ -748,18 +657,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+    <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="89" selection-start="4351" selection-end="4351" vertical-scroll-proportion="-14.269231">
+        <state line="26" column="9" selection-start="1451" selection-end="1462" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/BuddyLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="38" selection-start="1152" selection-end="1158" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+    <entry file="file://$PROJECT_DIR$/app/views/testBuddies.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="65" selection-start="3326" selection-end="3326" vertical-scroll-proportion="0.7079038">
+        <state line="10" column="39" selection-start="181" selection-end="181" vertical-scroll-proportion="-6.5384617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="20" selection-start="1793" selection-end="1793" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.5041518">
           <folding />
         </state>
       </provider>
