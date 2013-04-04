@@ -1,7 +1,7 @@
 @(form: Form[User])
 
 @main("index") {
-@helper.form(routes.Application.adduser) {
+@helper.form(routes.PostHandler.adduser) {
 <div class="text-center" >
     <h1>Register!</h1>
     @if(flash.contains("error")) {

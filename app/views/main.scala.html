@@ -21,9 +21,13 @@
     <script src=@routes.Assets.at(
     "javascripts/modernizr-2.0.6.min.js")></script>
     <link href=@routes.Assets.at(
+    "stylesheets/jquery-ui-1.10.2.custom.min.css") rel='stylesheet' />
+    <link href=@routes.Assets.at(
     "stylesheets/bootstrap.css") rel='stylesheet' />
+    <link href=@routes.Assets.at(
+    "stylesheets/style.css") rel='stylesheet' />
 </head>
-<body onload="setAlert()">
+<body >
 
 <div class="navbar navbar-fixed-top" id="header">
     <div class="navbar-inner">
@@ -65,11 +69,12 @@
                     }
 
                     @if(page == "profile") {
-                    <li class="active"><a href=@routes.Application.profile()>Profile</a></li>
+                    <li class="active"><a href=@routes.Application.profile(session().get("alias"))>Profile</a></li>
                     } else {
-                    <li><a href=@routes.Application.profile()>Profile</a></li>
+                    <li><a href=@routes.Application.profile(session().get("alias"))>Profile</a></li>
                     }
                     <li><a href=@routes.Application.logout()>Logout</a></li>
+                    <li class="span2 text-right"><h3>@session.get("alias")</h3></li>
                     }
 
                 </ul>
@@ -80,32 +85,29 @@
 <!-- /header -->
 <div class="row-fluid" id='container'>
     <div id='main' class="well span8 offset2" role='main'>
+        <div id="alertPlaceholder"></div>
         @if(session.contains("success")) {
         <div class="alert alert-success">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Success!</strong> @session.get("success")
-            @session.remove("success")
+            <strong>Success!</strong> @session.remove("success")
         </div>
         }
         @if(session.contains("error")) {
         <div class="alert alert-error">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Error!</strong> @session.get("error")
-            @session.remove("error")
+            <strong>Error!</strong> @session.remove("error")
         </div>
         }
         @if(session.contains("info")) {
         <div class="alert alert-info">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Info!</strong> @session.get("info")
-            @session.remove("info")
+            <strong>Info!</strong> @session.remove("info")
         </div>
         }
         @if(session.contains("warning")) {
         <div class="alert">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>Warning!</strong> @session.get("warning")
-            @session.remove("warning")
+            <strong>Warning!</strong> @session.remove("warning")
         </div>
         }
 
@@ -114,7 +116,7 @@
     <!-- /main -->
 </div>
 <!-- /container -->
-<footer><p class="text-center">&copy; TRIPlogger 2013 by MAKETEK</p></footer>
+<!--- screws up the layout... <footer><p class="text-center">&copy; TRIPlogger 2013 by MAKETEK</p></footer>--->
 <!-- /footer -->
 
 <!-- Le javascript
@@ -125,9 +127,13 @@
     "javascripts/bootstrap.min.js")>
 </script>
 <script src=@routes.Assets.at(
+"javascripts/jquery-ui-1.10.2.custom.min.js")>
+</script>
+<script src=@routes.Assets.at(
 "javascripts/plugins.js")></script>
 <script src=@routes.Assets.at(
 "javascripts/script.js")></script>
+<script src="@routes.Application.javascriptRoutes"></script>
 </body>
 </html>
 <!DOCTYPE html>

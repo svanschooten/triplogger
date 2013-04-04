@@ -33,6 +33,7 @@ public class User extends Model{
     public ArrayList<Trip> trips = new ArrayList<>();
     public ArrayList<User> buddies = new ArrayList<>();
     public ArrayList<User> pendingBuddies = new ArrayList<>();
+    public ArrayList<User> requests = new ArrayList<>();
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -75,14 +76,10 @@ public class User extends Model{
     }
 
     public static List<User> findLikeAlias(String alias){
-        return find.where().ilike("alias", alias).findList();
+        return find.where().ilike("alias", "%" + alias + "%").findList();
     }
 
-    public static User findByEmail(String email){
-        return find.where().eq("email", email).findUnique();
-    }
-
-    public static ArrayList<User> getBuddies(User u) {
+    public static ArrayList<User> getBuddiesList(User u) {
         List<BuddyLink> budds = BuddyLink.findBuddies(u);
         ArrayList<User> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
@@ -91,13 +88,34 @@ public class User extends Model{
         return buddies;
     }
 
-    public static ArrayList<User> getPendingBuddies(User u) {
+    public static ArrayList<User> getPendingBuddiesList(User u) {
         List<BuddyLink> budds = BuddyLink.findPendingBuddies(u);
         ArrayList<User> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
             buddies.add(User.findById(bl.buddyId));
         }
         return buddies;
+    }
+
+    public static ArrayList<User> getRequestsList(User u) {
+        List<BuddyLink> budds = BuddyLink.getRequests(u);
+        ArrayList<User> buddies = new ArrayList<>();
+        for(BuddyLink bl : budds){
+            buddies.add(User.findById(bl.userId));
+        }
+        return buddies;
+    }
+
+    public void getBuddies() {
+        this.buddies = getBuddiesList(this);
+    }
+
+    public void getPendingBuddies() {
+        this.pendingBuddies = getPendingBuddiesList(this);
+    }
+
+    public void getRequests() {
+        this.requests = getRequestsList(this);
     }
 
     public void addTrip(Trip trip){
@@ -134,6 +152,10 @@ public class User extends Model{
         return find.where().eq("alias", alias).eq("password", Crypto.encryptAES(password)).eq("validated", true).findUnique();
     }
 
-
+    public void restore() {
+        this.getBuddies();
+        this.getPendingBuddies();
+        this.getRequests();
+    }
 
 }

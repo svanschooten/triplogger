@@ -30,16 +30,14 @@ public class Trip extends Model{
     public User tripper;
     public int tripperId;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @Column
-    //TODO nog omzetten naar nieuwe opzet.
+
     public ArrayList<Integer> withBuddy;
 
     public String comments;
 
     @Required
-    @ManyToOne
     public Drug drug;
+    public int drugId;
 
     @Formats.DateTime(pattern="dd/MM/yyyy-hh:mm:ss")
     public DateTime dfrom;
@@ -50,17 +48,19 @@ public class Trip extends Model{
     @Constraints.Min(1)
     public int number;
 
-    @ManyToOne
     public Measure measure;
+    public int measureId;
 
     public Trip(User tripper, Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
         this.tripper = tripper;
         this.tripperId = tripper.uid;
         this.drug = drug;
+        this.drugId = drug.did;
         this.dfrom = from;
         this.dtill = till;
         this.number = number;
         this.measure = measure;
+        this.measureId = measure.mid;
         this.comments = comments;
         withBuddy = new ArrayList<>();
     }

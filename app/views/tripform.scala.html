@@ -1,7 +1,7 @@
 @import helper._
 
 @main("Local trippping"){
-@form(routes.Application.addTrip()) {
+@form(routes.PostHandler.addTrip()) {
     <select name="drug">
         @for(drug <- Drug.all()) {
              <option value=@drug.name>@drug.name</option>
