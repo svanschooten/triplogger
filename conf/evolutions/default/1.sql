@@ -15,6 +15,7 @@ create table drug (
   did                       integer not null,
   name                      varchar(255),
   erowid                    varchar(255),
+  standard_measure_id       integer,
   constraint pk_drug primary key (did))
 ;
 
