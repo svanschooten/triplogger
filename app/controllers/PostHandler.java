@@ -9,6 +9,8 @@ import play.mvc.Security;
 import views.html.login;
 import views.html.signup;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Stijn
@@ -66,7 +68,7 @@ public class PostHandler extends Controller {
     public static Result addTrip() {
         Form<Trip> tripForm = Form.form(Trip.class);
         if(tripForm.hasErrors()) {
-            return badRequest(views.html.index.render());
+            return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
             Trip.create(tripForm.get());
             return redirect(routes.Application.index());
@@ -77,7 +79,7 @@ public class PostHandler extends Controller {
     public static Result addDrug() {
         Form<Drug> drugForm = Form.form(Drug.class);
         if(drugForm.hasErrors()) {
-            return badRequest(views.html.index.render());
+            return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
             Drug.create(drugForm.get());
             return redirect(routes.Application.index());
@@ -88,7 +90,7 @@ public class PostHandler extends Controller {
     public static Result addMeasure() {
         Form<Measure> measureForm = Form.form(Measure.class);
         if(measureForm.hasErrors()) {
-            return badRequest(views.html.index.render());
+            return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
             Measure.create(measureForm.get());
             return redirect(routes.Application.index());
@@ -155,6 +157,11 @@ public class PostHandler extends Controller {
             }
         }
         return ok("Buddyrequest to " + targetAlias + " cancelled.");
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result getTripModal(String drug) {
+        return ok(drug);
     }
 
 }

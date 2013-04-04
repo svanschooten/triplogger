@@ -1,36 +1,52 @@
+@(drugs: List[Drug])
+
 @main("index") {
 
-<div class="row-fluid">
-    <div class="span10 offset1">
-        <div class="row">
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-            <div class="span3">
-                <canvas class="tripCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-            </div>
-        </div>
+
+<div id="newtrip" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Have a nice trip!</h3>
+    </div>
+    <div class="modal-body">
+        <p> --add trip form-- </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
     </div>
 </div>
+
+<div id="newdrug" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>What have you ingested now?</h3>
+    </div>
+    <div class="modal-body">
+        <p> -- add drug form-- </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+
+
+<div>
+    @for(drug <- drugs) {
+    <div class="drugbox">
+        <a data-toggle="modal"  href=@routes.PostHandler.getTripModal(drug.name) data-target="#newtrip">
+            <canvas class="tripCanvas" width="200" height="200" style="background: #CC0000"></canvas>
+        </a>
+    </div>
+    }
+
+    <div class="drugbox">
+        <a data-toggle="modal"  data-target="#newdrug">
+            <img src=@routes.Assets.at("images/add_drug.png")>
+        </a>
+    </div>
+</div>
+
 
 }

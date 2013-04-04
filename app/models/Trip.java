@@ -99,4 +99,16 @@ public class Trip extends Model{
     public static Trip findById(int id){
         return find.where().eq("tid", id).findUnique();
     }
+
+    public static List<Drug> findDrugsUsed(User u){
+        List<Trip> trips = find.where().eq("tripperId", u.uid).findList();
+        List<Drug> result = new ArrayList<>();
+        for(Trip trip : trips) {
+            Drug d = Drug.findById(trip.drugId);
+            if(!result.contains(d)){
+                result.add(d);
+            }
+        }
+        return result;
+    }
 }

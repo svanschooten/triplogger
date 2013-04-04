@@ -87,7 +87,7 @@ function setupHomeScreen() {
 	var counter = 0;
 	var canvasses = $(".tripCanvas");
 	var stepSize = canvasses.length;
-	alert(stepSize);
+	//alert(stepSize);
 }
 
 

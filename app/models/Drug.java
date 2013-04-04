@@ -52,4 +52,8 @@ public class Drug extends Model{
     public static List<Drug> all(){
         return find.all();
     }
+
+    public static Drug findById(int id) {
+        return find.where().eq("did", id).findUnique();
+    }
 }

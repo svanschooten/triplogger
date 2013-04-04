@@ -1,10 +1,13 @@
 package controllers;
 
+import models.Drug;
 import play.data.Form;
 import play.mvc.*;
 import models.Mail;
 import com.typesafe.plugin.*;
 import views.html.index;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,7 +22,7 @@ public class Mailer extends Controller{
     public static Result mailTo() {
         Form<Mail> mailForm = Form.form(Mail.class).bindFromRequest();
         if (mailForm.hasErrors()) {
-            return badRequest(index.render());
+            return badRequest(index.render(new ArrayList<Drug>()));
         } else {
             Mail mail = new Mail(mailForm.get().subject,mailForm.get().recipient,mailForm.get().sender,mailForm.get().text,mailForm.get().HTML);
             return mailTo(mail.subject, mail.recipient, mail.sender, mail.text, mail.HTML);
