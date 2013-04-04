@@ -178,12 +178,12 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result advancedtrip() {
-        return ok(views.html.advancedTrip.render());
+        return ok(views.html.advancedtrip.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result buddylist() {
-        return ok(views.html.buddyList.render());
+        return ok(views.html.buddylist.render());
     }
 
 
