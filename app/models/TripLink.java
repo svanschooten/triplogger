@@ -4,7 +4,6 @@ package models;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.*;
-import play.libs.Crypto;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +14,7 @@ import play.libs.Crypto;
  */
 
 @Entity
-public class TripRequest extends Model {
+public class TripLink extends Model {
 
     @Id
     @GeneratedValue
@@ -27,10 +26,11 @@ public class TripRequest extends Model {
     public int targetId;
     public Trip trip;
     public int tripId;
+    public boolean validated;
 
-    public static Model.Finder<Integer, TripRequest> find = new Model.Finder(Integer.class, TripRequest.class);
+    public static Model.Finder<Integer, TripLink> find = new Model.Finder(Integer.class, TripLink.class);
 
-    public TripRequest(User from, User target, Trip trip) {
+    public TripLink(User from, User target, Trip trip) {
         this.from = from;
         this.fromId = from.uid;
         this.target = target;
@@ -39,7 +39,7 @@ public class TripRequest extends Model {
         this.tripId = trip.tid;
     }
 
-    public static void create(TripRequest request) {
+    public static void create(TripLink request) {
         request.save();
     }
 
@@ -47,7 +47,7 @@ public class TripRequest extends Model {
         find.ref(id).delete();
     }
 
-    public static List<TripRequest> all(){
+    public static List<TripLink> all(){
         return find.all();
     }
 

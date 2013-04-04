@@ -16,7 +16,7 @@ public class BuddyLink extends Model{
 
     @Id
     @GeneratedValue
-    private int blid;
+    public int blid;
 
     public int userId;
     public int buddyId;
@@ -36,7 +36,13 @@ public class BuddyLink extends Model{
     }
 
     public static void delete(int id) {
+        int buddyId = find.ref(id).buddyId;
+        int userId = find.ref(id).userId;
         find.ref(id).delete();
+        BuddyLink revBl = exists(User.findById(buddyId), User.findById(userId));
+        if (revBl != null) {
+            find.ref(revBl.blid).delete();
+        }
     }
 
     public static List<BuddyLink> all(){
@@ -48,11 +54,11 @@ public class BuddyLink extends Model{
     }
 
     public static List<BuddyLink> findPendingBuddies(User user) {
-        return find.where().eq("userId",user.uid).eq("validated", false).findList();
+        return find.where().eq("userId",user.uid).eq("validated", false).orderBy("blid desc").findList();
     }
 
     public static List<BuddyLink> getRequests(User user) {
-        return find.where().eq("buddyId", user.uid).eq("validated", false).findList();
+        return find.where().eq("buddyId", user.uid).eq("validated", false).orderBy("blid desc").findList();
     }
 
     public static BuddyLink exists(User u, User target) {

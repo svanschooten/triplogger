@@ -1,3 +1,71 @@
+@(user: User)
+
 @main("buddy") {
-TODO
+<div class="row-fluid">
+    <div class="span10 offset1">
+        <div class="input-prepend input-append" style="margin-top: 11px;">
+            <span class="add-on"><i class="icon-search"> </i></span>
+            <input type="text" id="searchBuddy" class="autocomplete"
+                   data-url=@routes.Application.getUserAutocomplete()>
+            <button class="btn btn-primary" onclick="addBuddy()"><i class="icon-plus icon-white"> </i>
+                Add buddy
+            </button>
+        </div>
+
+    </div>
+    <div class="span12">
+        <hr class="soften">
+    </div>
+    <div class="span10 offset1">
+        <h2>Buddies:</h2>
+
+        <div class="row-fluid" id="userBuddies">
+            @for(buddy <- user.buddies) {
+            <div class="span4">
+                <a class="btn btn-large" href=@routes.Application.profile(buddy.alias)><i class="icon-user"></i>
+                    @buddy.alias</a>
+            </div>
+            }
+        </div>
+    </div>
+    <div class="span12">
+        <hr class="soften">
+    </div>
+    <div class="row10 offset1">
+        <h2>Requests:</h2>
+
+        <div class="row-fluid" id="userRequests">
+            @for(buddy <- user.requests) {
+            <div class="span4 btn-group" id="request-@buddy.alias" >
+                <button class="btn btn-large btn-inverse" href=@routes.Application.profile(buddy.alias)>
+                    <i class="icon-question-sign icon-white"></i> @buddy.alias
+                </button>
+                <button class="btn btn-large btn-inverse" onclick="acceptBuddy(this.name)" name=@buddy.alias>
+                    <i class="icon-ok icon-white"></i> Accept
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+    <div class="span12">
+        <hr class="soften">
+    </div>
+    <div class="row10 offset1">
+        <h2>Pending:</h2>
+
+        <div class="row-fluid" id="userPending">
+            @for(buddy <- user.pendingBuddies) {
+            <div class="span4 btn-group" id="pending-@buddy.alias">
+                <button class="btn btn-large btn-info" href=@routes.Application.profile(buddy.alias)>
+                    <i class="icon-comment icon-white"></i> @buddy.alias
+                </button>
+                <button class="btn btn-large btn-info" onclick="cancelRequest(this.name)" name=@buddy.alias>
+                    <i class="icon-remove icon-white"></i> Cancel
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
 }

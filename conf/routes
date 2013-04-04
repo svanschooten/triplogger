@@ -4,28 +4,39 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-
 GET     /login                      controllers.Application.login()
 GET     /signup                     controllers.Application.signup()
 GET     /logout                     controllers.Application.logout()
 GET     /trip                     	controllers.Application.advancedtrip()
 GET     /buddy                     	controllers.Application.buddylist()
 GET     /validate/:token            controllers.Application.userValidate(token: String)
-POST    /login                      controllers.Application.authenticate()
-POST    /methods/mail               controllers.Mailer.mailTo()
-POST    /adduser                    controllers.Application.adduser()
-POST    /addtrip                    controllers.Application.addTrip()
-POST    /adddrug                    controllers.Application.addDrug()
-POST    /addmeasure                 controllers.Application.addMeasure()
 GET     /local/addtrip              controllers.Application.addLocalTrip()
-POST    /deleteTrip/:id             controllers.Application.deleteTrip(id: Integer)
 GET     /login/:user&:pw            controllers.Application.autoLogIn(user: String, pw: String)
-GET     /profile                    controllers.Application.profile()
+GET     /profile/:alias             controllers.Application.profile(alias: String)
 GET     /stats                      controllers.Application.stats()
+GET		/getUserAutocomplete		controllers.Application.getUserAutocomplete(term: String ?= "")
+
+# Post requests
+POST    /login                      controllers.PostHandler.authenticate()
+POST    /methods/mail               controllers.Mailer.mailTo()
+POST    /adduser                    controllers.PostHandler.adduser()
+POST    /addtrip                    controllers.PostHandler.addTrip()
+POST    /adddrug                    controllers.PostHandler.addDrug()
+POST    /addmeasure                 controllers.PostHandler.addMeasure()
+POST    /deleteTrip/:id             controllers.PostHandler.deleteTrip(id: Integer)
+POST	/requestBuddy/:alias		controllers.PostHandler.requestBuddy(alias: String)
+POST	/acceptBuddy/:alias			controllers.PostHandler.acceptBuddy(alias: String)
+POST	/cancelRequest/:alias		controllers.PostHandler.cancelRequest(alias: String)
+
+# Javascript routing
+GET    /assets/javascripts/routes      controllers.Application.javascriptRoutes()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
 
 # Test pages:
 GET     /testBuddies                controllers.Test.testBuddy()
 GET		/testAddTrip				controllers.Test.testAddTrip()
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+

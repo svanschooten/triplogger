@@ -16,8 +16,8 @@ public class Test extends Controller {
     public static Result testBuddy() {
         List<User> users = User.all();
         for(User u : users){
-            u.setBuddies(User.getBuddies(u));
-            u.setPendingBuddies(User.getPendingBuddies(u));
+            u.setBuddies(User.getBuddiesList(u));
+            u.setPendingBuddies(User.getPendingBuddiesList(u));
         }
         return ok(views.html.testBuddies.render(users));
     }
