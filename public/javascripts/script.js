@@ -16,6 +16,8 @@ $(document).ready(function() {
 		}
 	});
 
+	setupHomeScreen();
+
 });
 
 function addBuddy() {
@@ -81,7 +83,12 @@ function cancelRequest(cancelBuddy) {
 	});
 }
 
-
+function setupHomeScreen() {
+	var counter = 0;
+	var canvasses = $(".tripCanvas");
+	var stepSize = canvasses.length;
+	alert(stepSize);
+}
 
 
 

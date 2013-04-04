@@ -31,10 +31,14 @@ public class Drug extends Model{
     @Constraints.Required
     public String name;
     public String erowid;
+    public Measure standardMeasure;
+    public int standardMeasureId;
 
-    public Drug(String name, String erowid) {
+    public Drug(String name, String erowid, Measure standardMeasure) {
         this.name = name;
         this.erowid = erowid;
+        this.standardMeasure = standardMeasure;
+        this.standardMeasureId = standardMeasure.mid;
     }
 
     public static void create(Drug drug) {
