@@ -101,7 +101,7 @@ function rgbToHex(r, g, b) {
 function setupTripCanvas() {
 	var counter = 0;
 	var canvasses = $(".tripCanvas");
-	var stepSize = Math.floor(360 / canvasses.length + 1);
+	var stepSize = 360 / (canvasses.length + 1);
 	for (var i=0; i<canvasses.length; i++) {
 		var canvas = canvasses[i];
 		var ctx = canvas.getContext("2d");
@@ -110,8 +110,8 @@ function setupTripCanvas() {
         var color = toRGB(counter, 1, 0.3);
 		var fractals = 2;
 		var randomFractals = 2;
-		var randomColorsS = 0.3;
-		var randomColorsI = 0.1;
+		var randomColorsS = 0.4;
+		var randomColorsI = 0.2;
 		var compareY = height / 2; // 300
 		var compareX = width / 2; // 300
         ctx.fillStyle = rgbToHex(color[0], color[1], color[2]);
