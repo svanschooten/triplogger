@@ -101,6 +101,9 @@ public class Trip extends Model{
     }
 
     public static List<Drug> findDrugsUsed(User u){
+        if(u == null) {
+            return new ArrayList<Drug>();
+        }
         List<Trip> trips = find.where().eq("tripperId", u.uid).findList();
         List<Drug> result = new ArrayList<>();
         for(Trip trip : trips) {
