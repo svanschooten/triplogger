@@ -104,6 +104,7 @@ function setupTripCanvas() {
 	var stepSize = 360 / (canvasses.length + 1);
 	for (var i=0; i<canvasses.length; i++) {
 		var canvas = canvasses[i];
+		var label = canvas.getAttribute("name"); // name of drug #elgar
 		var ctx = canvas.getContext("2d");
         var height = canvas.height;
         var width = canvas.width;
@@ -153,6 +154,9 @@ function setupTripCanvas() {
 			ctx.closePath();
 			ctx.fill();
 		}
+		ctx.fillStyle = "#A9A9A9";
+		ctx.font = "24pt Helvetica";
+		ctx.fillText(label,100,100);
         counter = counter + stepSize;
         if (counter >= 360) {
         	counter = counter - 360;
