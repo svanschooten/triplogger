@@ -37,9 +37,9 @@
         <div class="row-fluid" id="userRequests">
             @for(buddy <- user.requests) {
             <div class="span4 btn-group" id="request-@buddy.alias" >
-                <button class="btn btn-large btn-inverse" href=@routes.Application.profile(buddy.alias)>
+                <a class="btn btn-large btn-inverse" href=@routes.Application.profile(buddy.alias)>
                     <i class="icon-question-sign icon-white"></i> @buddy.alias
-                </button>
+                </a>
                 <button class="btn btn-large btn-inverse" onclick="acceptBuddy(this.name)" name=@buddy.alias>
                     <i class="icon-ok icon-white"></i> Accept
                 </button>
@@ -56,9 +56,9 @@
         <div class="row-fluid" id="userPending">
             @for(buddy <- user.pendingBuddies) {
             <div class="span4 btn-group" id="pending-@buddy.alias">
-                <button class="btn btn-large btn-info" href=@routes.Application.profile(buddy.alias)>
+                <a class="btn btn-large btn-info" href=@routes.Application.profile(buddy.alias)>
                     <i class="icon-comment icon-white"></i> @buddy.alias
-                </button>
+                </a>
                 <button class="btn btn-large btn-info" onclick="cancelRequest(this.name)" name=@buddy.alias>
                     <i class="icon-remove icon-white"></i> Cancel
                 </button>

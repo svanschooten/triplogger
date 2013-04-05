@@ -96,7 +96,7 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result advancedtrip() {
-        return ok(views.html.advancedtrip.render());
+        return ok(views.html.advancedTrip.render());
     }
 
     @Security.Authenticated(Secured.class)

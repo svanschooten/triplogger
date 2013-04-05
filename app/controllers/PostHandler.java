@@ -107,6 +107,9 @@ public class PostHandler extends Controller {
     public static Result requestBuddy(String targetAlias) {
         User user = User.findByAlias(session().get("alias"));
         User target = User.findByAlias(targetAlias);
+        if (user.uid == target.uid) {
+            return badRequest("You cannot add yourself as friend.");
+        }
         if (user == null || target == null) {
             return badRequest("Users not found, are you supposed to do that.");
         } else {

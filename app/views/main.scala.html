@@ -87,25 +87,25 @@
     <div id='main' class="span8 offset2" role='main'>
         <div id="alertPlaceholder"></div>
         @if(session.contains("success")) {
-        <div class="alert alert-success">
+        <div class="alert alert-success fade in out ">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <strong>Success!</strong> @session.remove("success")
         </div>
         }
         @if(session.contains("error")) {
-        <div class="alert alert-error">
+        <div class="alert alert-error fade in out ">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <strong>Error!</strong> @session.remove("error")
         </div>
         }
         @if(session.contains("info")) {
-        <div class="alert alert-info">
+        <div class="alert alert-info fade in out ">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <strong>Info!</strong> @session.remove("info")
         </div>
         }
         @if(session.contains("warning")) {
-        <div class="alert">
+        <div class="alert fade in out ">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <strong>Warning!</strong> @session.remove("warning")
         </div>
@@ -133,6 +133,8 @@
 "javascripts/plugins.js")></script>
 <script src=@routes.Assets.at(
 "javascripts/script.js")></script>
+<script src=@routes.Assets.at(
+"javascripts/hsi.min.js")></script>
 <script src="@routes.Application.javascriptRoutes"></script>
 </body>
 </html>

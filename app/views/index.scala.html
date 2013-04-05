@@ -40,7 +40,15 @@
         </a>
     </div>
     }
-
+    @if(drugs.length == 0) {
+        @for(a <- 1 to 17) {
+            <div class="drugbox">
+                <a data-toggle="modal" data-target="#newtrip">
+                    <canvas class="tripCanvas" width="200" height="200"></canvas>
+                </a>
+            </div>
+        }
+    }
     <div class="drugbox">
         <a data-toggle="modal"  data-target="#newdrug">
             <img src=@routes.Assets.at("images/add_drug.png")>

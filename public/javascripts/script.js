@@ -16,7 +16,7 @@ $(document).ready(function() {
 		}
 	});
 
-	setupHomeScreen();
+	setupTripCanvas();
 
 });
 
@@ -25,8 +25,8 @@ function addBuddy() {
     	success : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert alert-success">' +
 				'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
-				'<strong>Success!</strong> ' + response.responseText + ' </div>');
-            $("#userPending").append('<div class="span4 btn-group" id="pending-' + selectedBuddy + '">' +
+				'<strong>Success!</strong> ' + response + ' </div>');
+			$('<div class="span4 btn-group" id="pending-' + selectedBuddy + '">' +
 									  	'<button class="btn btn-large btn-info" href="' +
 									  	jsRoutes.controllers.PostHandler.profile(selectedBuddy) +
 									  	'">' +
@@ -35,12 +35,14 @@ function addBuddy() {
                                         '<button class="btn btn-large btn-info" onclick="' + jsRoutes.controllers.PostHandler.cancelRequest(selectedBuddy)+ '" name="' + selectedBuddy  + '">' +
                                              '<i class="icon-remove icon-white"></i> Cancel' +
                                         '</button>' +
-                                             '</div>');
+                                             '</div>').appendTo("#userPending");
+			$(".alert").alert();
 		},
 		error : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert">' +
             				'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
             				'<strong>Warning!</strong> ' + response.responseText + ' </div>');
+			$(".alert").alert();
 		}
     });
 }
@@ -50,18 +52,20 @@ function acceptBuddy(acceptedBuddy) {
 		success : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert alert-success">' +
 				'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
-				'<strong>Success!</strong> ' + response.responseText + ' </div>');
-			$("#request-" + acceptedBuddy).fadeOut('fast', $("#request-" + acceptedBuddy).remove());
-            $("#userBuddies").append('<div class="span4">' +
-										  '<a class="btn btn-large" href="' + jsRoutes.controllers.PostHandler.profile(acceptedBuddy) + '"><i class="icon-user"></i>' +
-											  acceptedBuddy +
-										  '</a>' +
-                                     '</div>');
+				'<strong>Success!</strong> ' + response + ' </div>');
+			$("#request-" + acceptedBuddy).fadeOut(300, function(){$(this).remove();});
+            $('<div class="span4">' +
+				  '<a class="btn btn-large" href="' + jsRoutes.controllers.PostHandler.profile(acceptedBuddy) + '"><i class="icon-user"></i>' +
+					  acceptedBuddy +
+				  '</a>' +
+			 '</div>').appendTo("#userBuddies").fadeIn();
+			$(".alert").alert();
 		},
 		error : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert">' +
 							'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
 							'<strong>Warning!</strong> ' + response.responseText + ' </div>');
+			$(".alert").alert();
 		}
 	});
 
@@ -72,13 +76,15 @@ function cancelRequest(cancelBuddy) {
 		success : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert alert-success">' +
 				'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
-				'<strong>Success!</strong> ' + response.responseText + ' </div>');
-			$("#pending-" + cancelBuddy).fadeOut('fast', $("#pending-" + cancelBuddy).remove());
+				'<strong>Success!</strong> ' + response + ' </div>');
+			$("#pending-" + cancelBuddy).fadeOut(300, function(){$(this).remove();});
+			$(".alert").alert();
 		},
 		error : function(response) {
 			$("#alertPlaceholder").replaceWith('<div id="alertPlaceholder" class="alert">' +
 							'<a class="close" data-dismiss="alert" href="#">&times;</a>' +
 							'<strong>Warning!</strong> ' + response.responseText + ' </div>');
+			$(".alert").alert();
 		}
 	});
 }
@@ -92,7 +98,7 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-function setupHomeScreen() {
+function setupTripCanvas() {
 	var counter = 0;
 	var canvasses = $(".tripCanvas");
 	var stepSize = Math.floor(360 / canvasses.length + 1);
@@ -101,7 +107,13 @@ function setupHomeScreen() {
 		var ctx = canvas.getContext("2d");
         var height = canvas.height;
         var width = canvas.width;
-        var color = toRGB(counter, 1, 0.333);
+        var color = toRGB(counter, 1, 0.3);
+		var fractals = 2;
+		var randomFractals = 2;
+		var randomColorsS = 0.3;
+		var randomColorsI = 0.1;
+		var compareY = height / 2; // 300
+		var compareX = width / 2; // 300
         ctx.fillStyle = rgbToHex(color[0], color[1], color[2]);
         ctx.lineTo(0, 0);
         ctx.lineTo(width, 0);
@@ -109,37 +121,41 @@ function setupHomeScreen() {
         ctx.lineTo(0, height);
         ctx.closePath();
 		ctx.fill();
-        for (var i2=0; i2<3; i2++) {
+        for (var i2=0; i2<fractals; i2++) {
+            ctx.beginPath();
+			var randY = Math.floor(Math.random() * height * randomFractals) - (height * randomFractals * 0.5);
+			var randX = Math.floor(Math.random() * width * randomFractals) - (width * randomFractals * 0.5);
+			ctx.moveTo((compareX) + randX, (compareY) + randY);
+			color = toRGB(counter, 1 - (Math.random() * randomColorsS), 0.3 + ((Math.random() * randomColorsI) - (randomColorsI * 0.5)));
+			ctx.fillStyle = rgbToHex(color[0], color[1], color[2]);
 			var x = Math.floor(Math.random() * width);
 			var y = Math.floor(Math.random() * height);
-            ctx.beginPath();
-			ctx.moveTo(width / 2,height / 2);
-			color = toRGB(counter, 1 - (Math.random() * 0.3), 0.333 + ((Math.random() * 0.2) - 0.1));
-			alert(rgbToHex(color[0], color[1], color[2]));
-			ctx.strokeStyle = rgbToHex(color[0], color[1], color[2]);
-            if(y < 150){
+            if(y < compareY){
             	ctx.lineTo(x, 0);
-                if(x < 150){
+                if(x < compareX){
                   ctx.lineTo(0,0);
                   ctx.lineTo(0,y);
                 } else {
-                  ctx.lineTo(300,0);
-                  ctx.lineTo(300,y);
+                  ctx.lineTo(width,0);
+                  ctx.lineTo(width,y);
                 }
               } else {
-				ctx.lineTo(x, 300);
-                if(x < 150){
-                  ctx.lineTo(0,300);
+				ctx.lineTo(x, height);
+                if(x < compareX){
+                  ctx.lineTo(0, height);
                   ctx.lineTo(0,y);
                 } else {
-                  ctx.lineTo(300,300);
-                  ctx.lineTo(300,y);
+                  ctx.lineTo(width, height);
+                  ctx.lineTo(width,y);
                 }
               }
-            ctx.lineTo(150,150);
+            ctx.lineTo(compareY,compareX);
 			ctx.closePath();
 			ctx.fill();
-        }
+		}
         counter = counter + stepSize;
+        if (counter >= 360) {
+        	counter = counter - 360;
+        }
 	};
 };
