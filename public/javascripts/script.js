@@ -155,11 +155,36 @@ function setupTripCanvas() {
 			ctx.fill();
 		}
 		ctx.fillStyle = "#A9A9A9";
-		ctx.font = "24pt Helvetica";
-		ctx.fillText(label,100,100);
+		var fontSize = 24;
+		ctx.font = fontSize + "pt Helvetica";
+		//ctx.textAlign = 'center';
+		var maxWidth = width - 40;
+		var lineHeight = fontSize * 1.5;
+		var textX = (width - maxWidth) / 2;
+		var textY = 60;
+		wrapText(ctx, label, textX, textY, maxWidth, lineHeight)
+		//ctx.fillText(label,(width / 2), (height / 2));
         counter = counter + stepSize;
         if (counter >= 360) {
         	counter = counter - 360;
         }
 	};
 };
+
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+var words = text.split(' ');
+var line = '';
+for(var n = 0; n < words.length; n++) {
+	var testLine = line + words[n] + ' ';
+	var metrics = context.measureText(testLine);
+	var testWidth = metrics.width;
+	if(testWidth > maxWidth) {
+		context.fillText(line, x, y);
+		line = words[n] + ' ';
+		y += lineHeight;
+	} else {
+		line = testLine;
+	}
+}
+context.fillText(line, x, y);
+}
