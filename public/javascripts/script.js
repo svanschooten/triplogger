@@ -104,7 +104,7 @@ function setupTripCanvas() {
 	var stepSize = 360 / (canvasses.length + 1);
 	for (var i=0; i<canvasses.length; i++) {
 		var canvas = canvasses[i];
-		var label = canvas.getAttribute("name"); // name of drug #elgar
+		var label = canvas.getAttribute("name"); // name of drug
 		var ctx = canvas.getContext("2d");
         var height = canvas.height;
         var width = canvas.width;
@@ -157,13 +157,12 @@ function setupTripCanvas() {
 		ctx.fillStyle = "#A9A9A9";
 		var fontSize = 24;
 		ctx.font = fontSize + "pt Helvetica";
-		//ctx.textAlign = 'center';
 		var maxWidth = width - 40;
+		var maxHeight = height - 40;
 		var lineHeight = fontSize * 1.5;
-		var textX = (width - maxWidth) / 2;
-		var textY = 60;
-		wrapText(ctx, label, textX, textY, maxWidth, lineHeight)
-		//ctx.fillText(label,(width / 2), (height / 2));
+		var textX = 20;
+		var textY = 40;
+		wrapText(ctx, label, textX, textY, maxWidth, maxHeight, lineHeight)
         counter = counter + stepSize;
         if (counter >= 360) {
         	counter = counter - 360;
@@ -171,20 +170,28 @@ function setupTripCanvas() {
 	};
 };
 
-function wrapText(context, text, x, y, maxWidth, lineHeight) {
-var words = text.split(' ');
-var line = '';
-for(var n = 0; n < words.length; n++) {
-	var testLine = line + words[n] + ' ';
-	var metrics = context.measureText(testLine);
-	var testWidth = metrics.width;
-	if(testWidth > maxWidth) {
-		context.fillText(line, x, y);
-		line = words[n] + ' ';
-		y += lineHeight;
-	} else {
-		line = testLine;
+function wrapText(context, text, x, y, maxWidth, maxHeight, lineHeight) {
+	var words = text.split(' ');
+	var line = '';
+	for(var n = 0; n < words.length; n++) {
+		if(y > maxHeight) {
+			context.fillText("....", x, y);
+			return;
+		}
+		var word = words[n];
+		while(context.measureText(word + "..").width > maxWidth) {
+			word = word.substr(0, word.length - 3) + "..";
+		}
+		var testLine = line + word + ' ';
+		var metrics = context.measureText(testLine);
+		var testWidth = metrics.width;
+		if(testWidth > maxWidth) {
+			context.fillText(line, x, y);
+			line = word + ' ';
+			y += lineHeight;
+		} else {
+			line = testLine;
+		}
 	}
-}
-context.fillText(line, x, y);
+	context.fillText(line, x, y);
 }
