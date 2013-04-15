@@ -1,5 +1,6 @@
 package models;
 
+import org.joda.time.DateTime;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -30,10 +31,10 @@ public class User extends Model{
     public String password;
 
 
-    public ArrayList<Trip> trips = new ArrayList<>();
-    public ArrayList<User> buddies = new ArrayList<>();
-    public ArrayList<User> pendingBuddies = new ArrayList<>();
-    public ArrayList<User> requests = new ArrayList<>();
+    public List<Trip> trips = new ArrayList<>();
+    public List<User> buddies = new ArrayList<>();
+    public List<User> pendingBuddies = new ArrayList<>();
+    public List<User> requests = new ArrayList<>();
     public boolean validated;
 
     public User(String alias, String email, String password) {
@@ -55,7 +56,28 @@ public class User extends Model{
             BuddyLink bl = new BuddyLink(stijn, elgar);
             bl.setValidated();
             BuddyLink.create(bl);
-
+        }
+        if(Trip.findDrugsUsed(User.findByAlias("svsoke")).isEmpty()) {
+            if(Drug.all().size() == 0 ) {
+                if(Measure.all().size() == 0) {
+                    Measure m = new Measure("units","units");
+                    m.create();
+                    for(int i = 0; i < 30; i++){
+                        Measure m2 = new Measure("test", i+"");
+                        m2.create();
+                    }
+                }
+                Drug d = new Drug("Shrooms","http://www.erowid.org/plants/mushrooms/mushrooms.shtml", Measure.findName("units"));
+                d.create();
+            }
+            Trip t = new Trip(Drug.findByName("Shrooms"), DateTime.now(), DateTime.now(), 2, Measure.findName("units"), "Test trippppp!");
+            t.create();
+            t.restoreId();
+            t.addTripper(User.findByAlias("svsoke"));
+            System.out.println("Here the id is: " + t.tid);
+            User budd = User.findByAlias("mcawesome");
+            t.addBuddy(budd);
+            TripLink.find.where().eq("tripperId", budd.uid).findUnique().accept();
         }
     }
 
@@ -156,6 +178,7 @@ public class User extends Model{
         this.getBuddies();
         this.getPendingBuddies();
         this.getRequests();
+        this.trips = Trip.getByUser(this);
     }
 
 }

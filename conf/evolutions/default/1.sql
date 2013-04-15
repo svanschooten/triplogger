@@ -28,7 +28,6 @@ create table measure (
 
 create table trip (
   tid                       integer not null,
-  tripper_id                integer,
   comments                  varchar(255),
   drug_id                   integer,
   dfrom                     timestamp,
@@ -40,10 +39,10 @@ create table trip (
 
 create table trip_link (
   trid                      integer not null,
-  from_id                   integer,
-  target_id                 integer,
+  tripper_id                integer,
   trip_id                   integer,
   validated                 boolean,
+  declined                  boolean,
   constraint pk_trip_link primary key (trid))
 ;
 

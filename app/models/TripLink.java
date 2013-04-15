@@ -20,27 +20,26 @@ public class TripLink extends Model {
     @GeneratedValue
     public int trid;
 
-    public User from;
-    public int fromId;
-    public User target;
-    public int targetId;
+    public User tripper;
+    public int tripperId;
     public Trip trip;
     public int tripId;
     public boolean validated;
+    public boolean declined;
 
     public static Model.Finder<Integer, TripLink> find = new Model.Finder(Integer.class, TripLink.class);
 
-    public TripLink(User from, User target, Trip trip) {
-        this.from = from;
-        this.fromId = from.uid;
-        this.target = target;
-        this.targetId = target.uid;
+    public TripLink(User tripper, Trip trip) {
+        this.tripper = tripper;
+        this.tripperId = tripper.uid;
         this.trip = trip;
         this.tripId = trip.tid;
+        this.validated = false;
+        this.declined = false;
     }
 
-    public static void create(TripLink request) {
-        request.save();
+    public void create() {
+        this.save();
     }
 
     public static void delete(int id) {
@@ -52,13 +51,31 @@ public class TripLink extends Model {
     }
 
     public void accept() {
-        from = User.findById(fromId);
-        target = User.findById(targetId);
-        trip = Trip.findById(tripId);
-        trip.addBuddy(target);
-        Trip buddyTrip = new Trip(target, trip.drug, trip.dfrom, trip.dtill, trip.number, trip.measure, trip.comments);
-        buddyTrip.addBuddy(from);
-        buddyTrip.save();
-        this.delete();
+        if(!this.declined) {
+            this.validated = true;
+            this.save();
+        }
+    }
+
+    public void decline() {
+        if(!this.validated){
+            this.declined = true;
+            this.save();
+        }
+    }
+
+    public static void restoreTripBuddies(Trip trip) {
+        List<TripLink> links = find.where().eq("tripId", trip.tid).findList();
+        for (TripLink link : links) {
+            trip.withBuddy.add(User.findById(link.tripperId));
+        }
+    }
+
+    public static boolean trippedWithBuddy(Trip trip, User buddy){
+        return TripLink.find.where().eq("tripId", trip.tid).eq("tripperId", buddy.uid).findUnique() == null;
+    }
+
+    public static List<TripLink> findTrips(User u) {
+        return find.where().eq("tripperId", u.uid).findList();
     }
 }

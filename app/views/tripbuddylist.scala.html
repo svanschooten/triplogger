@@ -1,0 +1,11 @@
+@(buddies: List[User])
+
+<table class="table table-striped table-hover">
+    @for(buddy <- buddies){
+        <tr>
+            <td>
+                <a class="btn btn-link" href=@routes.Application.profile(buddy.alias)> @buddy.alias </a>
+            </td>
+        </tr>
+    }
+</table>

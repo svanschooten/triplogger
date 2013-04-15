@@ -41,16 +41,11 @@
     @for(drug <- drugs) {
     <div class="drugbox">
         <a data-toggle="modal"  href=@routes.PostHandler.getTripModal(drug.name) data-target="#newtrip" name=@drug.name>
-            <canvas class="tripCanvas" width="200" height="200" style="background: #CC0000"></canvas>
+            <canvas class="tripCanvas" width="200" height="200"  name=@drug.name ></canvas>
         </a>
     </div>
     }
     @if(drugs.length == 0) {
-        <div class="drugbox">
-            <a data-toggle="modal" data-target="#newtrip" >
-                <canvas class="tripCanvas" width="200" height="200" name="paddo's"></canvas>
-            </a>
-        </div>
         @for(a <- 1 to 16) {
             <div class="drugbox">
                 <a data-toggle="modal" data-target="#newtrip">

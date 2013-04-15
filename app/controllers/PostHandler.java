@@ -70,7 +70,8 @@ public class PostHandler extends Controller {
         if(tripForm.hasErrors()) {
             return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
-            Trip.create(tripForm.get());
+            Trip t = tripForm.get();
+            t.create();
             return redirect(routes.Application.index());
         }
     }
@@ -81,7 +82,8 @@ public class PostHandler extends Controller {
         if(drugForm.hasErrors()) {
             return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
-            Drug.create(drugForm.get());
+            Drug d = drugForm.get();
+            d.create();
             return redirect(routes.Application.index());
         }
     }
@@ -92,7 +94,8 @@ public class PostHandler extends Controller {
         if(measureForm.hasErrors()) {
             return badRequest(views.html.index.render(new ArrayList<Drug>()));
         } else {
-            Measure.create(measureForm.get());
+            Measure m = measureForm.get();
+            m.create();
             return redirect(routes.Application.index());
         }
     }
@@ -165,6 +168,12 @@ public class PostHandler extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result getTripModal(String drug) {
         return ok(drug);
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result getTripBuddies(int tripId) {
+        Trip trip = Trip.findById(tripId);
+        return ok(views.html.tripbuddylist.render(trip.withBuddy));
     }
 
 }

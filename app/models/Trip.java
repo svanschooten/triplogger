@@ -27,11 +27,7 @@ public class Trip extends Model{
 
     public static Finder<Integer, Trip> find = new Finder(Integer.class, Trip.class);
 
-    public User tripper;
-    public int tripperId;
-
-
-    public ArrayList<Integer> withBuddy;
+    public List<User> withBuddy = new ArrayList<>(  );
 
     public String comments;
 
@@ -51,9 +47,7 @@ public class Trip extends Model{
     public Measure measure;
     public int measureId;
 
-    public Trip(User tripper, Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
-        this.tripper = tripper;
-        this.tripperId = tripper.uid;
+    public Trip(Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
         this.drug = drug;
         this.drugId = drug.did;
         this.dfrom = from;
@@ -65,27 +59,35 @@ public class Trip extends Model{
         withBuddy = new ArrayList<>();
     }
 
-    public Trip(User tripper, Drug drug) {
-        this.tripper = tripper;
-        this.tripperId = tripper.uid;
+    public Trip(Drug drug) {
         this.drug = drug;
         this.dfrom = new DateTime();
         this.dtill = new DateTime();
         this.number = 1;
-        this.measure = Measure.findName("unit");
+        this.measure = Measure.findById(drug.standardMeasureId);
         this.comments = "";
-        this.withBuddy = new ArrayList<>();
+        withBuddy = new ArrayList<>();
+    }
+
+    public void addTripper(User user) {
+        withBuddy.add(user);
+        TripLink tl = new TripLink(user, this);
+        tl.accept();
+        tl.create();
+        this.save();
     }
 
     public void addBuddy(User user) {
-        if(!withBuddy.contains(user.uid)){
-            withBuddy.add(user.uid);
+        if(!withBuddy.contains(user)){
+            withBuddy.add(user);
+            TripLink tl = new TripLink(user, this);
+            tl.create();
         }
         this.save();
     }
 
-    public static void create(Trip trip) {
-        trip.save();
+    public void create() {
+        this.save();
     }
 
     public static void delete(int id) {
@@ -104,13 +106,40 @@ public class Trip extends Model{
         if(u == null) {
             return new ArrayList<Drug>();
         }
-        List<Trip> trips = find.where().eq("tripperId", u.uid).findList();
-        List<Drug> result = new ArrayList<>();
-        for(Trip trip : trips) {
-            Drug d = Drug.findById(trip.drugId);
-            if(!result.contains(d)){
-                result.add(d);
+        ArrayList<Drug> result = new ArrayList<>();
+        List<TripLink> links = TripLink.findTrips(u);
+        for(TripLink link : links) {
+            Trip t = Trip.findById(link.tripId);
+            result.add(Drug.findById(t.drugId));
+        }
+        return result;
+    }
+
+    public void restore() {
+        withBuddy = new ArrayList<>();
+        TripLink.restoreTripBuddies(this);
+        drug = Drug.findById(drugId);
+        measure = Measure.findById(measureId);
+    }
+
+    public void restoreId() {
+        List<Trip> allTrips = Trip.all();
+        int maxId = -1;
+        for(Trip t : allTrips) {
+            if(t.tid > maxId) {
+                maxId = t.tid;
             }
+        }
+       tid = maxId;
+    }
+
+    public static List<Trip> getByUser(User u) {
+        List<TripLink> links = TripLink.findTrips(u);
+        List<Trip> result = new ArrayList<>();
+        for(TripLink link : links) {
+            Trip t = Trip.findById(link.tripId);
+            t.restore();
+            result.add(t);
         }
         return result;
     }

@@ -41,8 +41,8 @@ public class Drug extends Model{
         this.standardMeasureId = standardMeasure.mid;
     }
 
-    public static void create(Drug drug) {
-        drug.save();
+    public void create() {
+        this.save();
     }
 
     public static void delete(int id) {
@@ -55,5 +55,20 @@ public class Drug extends Model{
 
     public static Drug findById(int id) {
         return find.where().eq("did", id).findUnique();
+    }
+
+    public static Drug findByName(String name) {
+        return find.where().eq("name", name).findUnique();
+    }
+
+    public void restoreId() {
+        List<Drug> allDrugs = Drug.all();
+        int maxId = -1;
+        for(Drug d : allDrugs) {
+            if(d.did > maxId) {
+                maxId = d.did;
+            }
+        }
+        did = maxId;
     }
 }

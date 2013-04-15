@@ -1,8 +1,53 @@
 @(trips: List[Trip])
 
 
-<ul class="triplist">
-    @for(trip <- trips) {
-        <li>@trip.drug.name</li>
+@main("trips") {
+<div id="buddies" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>With whom have you been trippin'?</h3>
+    </div>
+    <div class="modal-body">
+        <p> -- add buddy form-- </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+<div id="comments" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Memories and comments.</h3>
+    </div>
+    <div class="modal-body">
+        <p> -- add comments form-- </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+<table class="triplist table table-hover table-striped" >
+    @if(trips.isEmpty) {
+       <p class="muted"> No trips found. </p>
+    } else {
+        @for(trip <- trips) {
+        <tr>
+            <td><p class="muted">#@trip.tid </p></td>
+            <td><a class="btn btn-link" href=@trip.drug.erowid target="_blank">@trip.drug.name</a> </td>
+            <td> - @trip.number @trip.measure.display </td>
+            <td> <button class="btn btn-link" data-toggle="modal" href=@routes.PostHandler.getTripBuddies(trip.tid) data-target="#buddies">@if(trip.withBuddy.isEmpty) {
+                    Tripping solo!
+                } else {
+                     With buddies!
+                } </button></td>
+            <td> <button class="btn btn-link" data-toggle="modal" data-target="#comments" > comments/experiences </button></td>
+
+
+        </tr>
+        }
     }
-</ul>
+
+</table>
+        }

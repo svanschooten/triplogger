@@ -95,8 +95,11 @@ public class Application extends Controller{
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result advancedtrip() {
-        return ok(views.html.advancedTrip.render());
+    public static Result trips() {
+        User u = User.findByAlias(session().get("alias"));
+        u.restore();
+        System.out.println(u.trips.size());
+        return ok(views.html.trips.render(u.trips));
     }
 
     @Security.Authenticated(Secured.class)

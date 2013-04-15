@@ -36,8 +36,8 @@ public class Measure extends Model{
         this.display = display;
     }
 
-    public static void create(Measure measure) {
-        measure.save();
+    public void create() {
+        this.save();
     }
 
     public static void delete(int id) {
@@ -50,5 +50,9 @@ public class Measure extends Model{
 
     public static Measure findName(String name){
         return find.where().eq("name", name).findUnique();
+    }
+
+    public static Measure findById(int id) {
+        return find.where().eq("mid", id).findUnique();
     }
 }
