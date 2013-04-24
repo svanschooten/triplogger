@@ -1,17 +1,19 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.lang.String;
 import java.util.List;
+import java.util.UUID;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 30-3-13
  * Time: 16:37
  * To change this template use File | Settings | File Templates.
@@ -20,8 +22,9 @@ import play.db.ebean.Model;
 @Entity
 public class Measure extends Model{
 
-
     @GeneratedValue
+    private int id;
+
     @Id
     public int mid;
 
@@ -37,6 +40,7 @@ public class Measure extends Model{
     }
 
     public void create() {
+        this.mid = TLUID.create();
         this.save();
     }
 

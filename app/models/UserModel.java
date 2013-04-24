@@ -5,24 +5,28 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import play.libs.Crypto;
 
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 30-3-13
  * Time: 16:21
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class User extends Model{
+public class UserModel extends Model{
 
-    public static Finder<Integer, User> find = new Finder(Integer.class, User.class);
+    public static Finder<Integer, UserModel> find = new Finder(Integer.class, UserModel.class);
+
+    @GeneratedValue
+    private int id;
 
     @Id
-    @GeneratedValue
     public int uid;
     public String alias;
     public String email;
@@ -32,12 +36,12 @@ public class User extends Model{
 
 
     public List<Trip> trips = new ArrayList<>();
-    public List<User> buddies = new ArrayList<>();
-    public List<User> pendingBuddies = new ArrayList<>();
-    public List<User> requests = new ArrayList<>();
+    public List<UserModel> buddies = new ArrayList<>();
+    public List<UserModel> pendingBuddies = new ArrayList<>();
+    public List<UserModel> requests = new ArrayList<>();
     public boolean validated;
 
-    public User(String alias, String email, String password) {
+    public UserModel(String alias, String email, String password) {
         this.alias = alias;
         this.email = email;
         this.password = Crypto.encryptAES(password);
@@ -47,17 +51,17 @@ public class User extends Model{
 
     public static void init() {
         if(authenticate("svsoke", "password")== null && authenticate("mcawesome", "password")== null) {
-            User stijn = new User("svsoke", "svsoke@hotmail.com", "password");
-            User elgar = new User("mcawesome", "elgar.groot@gmail.com", "password");
+            UserModel stijn = new UserModel("svsoke", "svsoke@hotmail.com", "password");
+            UserModel elgar = new UserModel("mcawesome", "elgar.groot@gmail.com", "password");
             stijn.validated = true;
             elgar.validated = true;
-            create(stijn);
-            create(elgar);
+            stijn.create();
+            elgar.create();
             BuddyLink bl = new BuddyLink(stijn, elgar);
             bl.setValidated();
-            BuddyLink.create(bl);
+            bl.create();
         }
-        if(Trip.findDrugsUsed(User.findByAlias("svsoke")).isEmpty()) {
+        if(TripHead.findDrugsUsed(UserModel.findByAlias("svsoke")).isEmpty()) {
             if(Drug.all().size() == 0 ) {
                 if(Measure.all().size() == 0) {
                     Measure m = new Measure("units","units");
@@ -70,60 +74,58 @@ public class User extends Model{
                 Drug d = new Drug("Shrooms","http://www.erowid.org/plants/mushrooms/mushrooms.shtml", Measure.findName("units"));
                 d.create();
             }
-            Trip t = new Trip(Drug.findByName("Shrooms"), DateTime.now(), DateTime.now(), 2, Measure.findName("units"), "Test trippppp!");
+            ArrayList<UserModel> buds = new ArrayList<>();
+            buds.add(UserModel.findByAlias("mcawesome"));
+            Trip t = new Trip(UserModel.findByAlias("svsoke"), Drug.findByName("Shrooms"), new Date(), new Date(),
+                    2, Measure.findName("units"), buds, "Yeah, tripping!!", true);
             t.create();
-            t.restoreId();
-            t.addTripper(User.findByAlias("svsoke"));
-            System.out.println("Here the id is: " + t.tid);
-            User budd = User.findByAlias("mcawesome");
-            t.addBuddy(budd);
-            TripLink.find.where().eq("tripperId", budd.uid).findUnique().accept();
+            TripLink.find.where().eq("tripperId", buds.remove(0).uid).findUnique().accept();
         }
     }
 
-    public void setBuddies(ArrayList<User> buddyList) {
+    public void setBuddies(ArrayList<UserModel> buddyList) {
         this.buddies = buddyList;
     }
 
-    public void setPendingBuddies(ArrayList<User> buddyList) {
+    public void setPendingBuddies(ArrayList<UserModel> buddyList) {
         this.pendingBuddies = buddyList;
     }
 
-    public static User findById(int id){
+    public static UserModel findById(int id){
         return find.where().eq("uid", id).findUnique();
     }
 
-    public static User findByAlias(String alias){
+    public static UserModel findByAlias(String alias){
         return find.where().eq("alias", alias).findUnique();
     }
 
-    public static List<User> findLikeAlias(String alias){
+    public static List<UserModel> findLikeAlias(String alias){
         return find.where().ilike("alias", "%" + alias + "%").findList();
     }
 
-    public static ArrayList<User> getBuddiesList(User u) {
+    public static ArrayList<UserModel> getBuddiesList(UserModel u) {
         List<BuddyLink> budds = BuddyLink.findBuddies(u);
-        ArrayList<User> buddies = new ArrayList<>();
+        ArrayList<UserModel> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
-            buddies.add(User.findById(bl.buddyId));
+            buddies.add(UserModel.findById(bl.buddyId));
         }
         return buddies;
     }
 
-    public static ArrayList<User> getPendingBuddiesList(User u) {
+    public static ArrayList<UserModel> getPendingBuddiesList(UserModel u) {
         List<BuddyLink> budds = BuddyLink.findPendingBuddies(u);
-        ArrayList<User> buddies = new ArrayList<>();
+        ArrayList<UserModel> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
-            buddies.add(User.findById(bl.buddyId));
+            buddies.add(UserModel.findById(bl.buddyId));
         }
         return buddies;
     }
 
-    public static ArrayList<User> getRequestsList(User u) {
+    public static ArrayList<UserModel> getRequestsList(UserModel u) {
         List<BuddyLink> budds = BuddyLink.getRequests(u);
-        ArrayList<User> buddies = new ArrayList<>();
+        ArrayList<UserModel> buddies = new ArrayList<>();
         for(BuddyLink bl : budds){
-            buddies.add(User.findById(bl.userId));
+            buddies.add(UserModel.findById(bl.userId));
         }
         return buddies;
     }
@@ -140,37 +142,31 @@ public class User extends Model{
         this.requests = getRequestsList(this);
     }
 
-    public void addTrip(Trip trip){
-        if(!trips.contains(trip.tid)) {
-            trips.add(trip);
-            create(this);
-        }
-    }
-
-    public void addBuddy(User u) {
+    public void addBuddy(UserModel u) {
         if(BuddyLink.exists(this, u) == null) {
-            BuddyLink.create(new BuddyLink(this, u));
+            new BuddyLink(this, u).create();
         }
     }
 
     public void addPoints(int p) {
         this.trippoints += p;
-        create(this);
+        this.save();
     }
 
-    public static void create(User user) {
-        user.save();
+    public void create() {
+        this.uid = TLUID.create();
+        this.save();
     }
 
     public static void delete(int id) {
         find.ref(id).delete();
     }
 
-    public static List<User> all(){
+    public static List<UserModel> all(){
         return find.all();
     }
 
-    public static User authenticate(String alias, String password) {
+    public static UserModel authenticate(String alias, String password) {
         return find.where().eq("alias", alias).eq("password", Crypto.encryptAES(password)).eq("validated", true).findUnique();
     }
 
@@ -178,7 +174,7 @@ public class User extends Model{
         this.getBuddies();
         this.getPendingBuddies();
         this.getRequests();
-        this.trips = Trip.getByUser(this);
+        this.trips = Trip.getTripsByUser(this);
     }
 
 }

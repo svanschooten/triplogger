@@ -1,146 +1,79 @@
 package models;
 
-
 import org.joda.time.DateTime;
-import play.data.format.Formats;
-import play.data.validation.Constraints;
-import play.db.ebean.*;
-import javax.persistence.*;
-import java.util.*;
-import play.data.validation.Constraints.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
- * Date: 30-3-13
- * Time: 16:35
+ * UserModel: Stijn
+ * Date: 24-4-13
+ * Time: 14:19
  * To change this template use File | Settings | File Templates.
  */
-@Entity
-public class Trip extends Model{
+public class Trip {
 
-
-    @GeneratedValue
-    @Id
-    public Integer tid;
-
-    public static Finder<Integer, Trip> find = new Finder(Integer.class, Trip.class);
-
-    public List<User> withBuddy = new ArrayList<>(  );
-
-    public String comments;
-
-    @Required
+    public int tid;
+    public UserModel tripper;
     public Drug drug;
-    public int drugId;
-
-    @Formats.DateTime(pattern="dd/MM/yyyy-hh:mm:ss")
-    public DateTime dfrom;
-
-    @Formats.DateTime(pattern="dd/MM/yyyy-hh:mm:ss")
-    public DateTime dtill;
-
-    @Constraints.Min(1)
-    public int number;
-
+    public Date dfrom;
+    public Date dtill;
+    public int amount;
     public Measure measure;
-    public int measureId;
+    public List<UserModel> tripBuddies;
+    public String comments;
+    public boolean validated;
 
-    public Trip(Drug drug, DateTime from, DateTime till, int number, Measure measure, String comments) {
+    public Trip (UserModel tripper, Drug drug, Date dfrom, Date dtill, int amount, Measure measure, List<UserModel> tripBuddies, String comments, boolean validated) {
+        this.tripper = tripper;
         this.drug = drug;
-        this.drugId = drug.did;
-        this.dfrom = from;
-        this.dtill = till;
-        this.number = number;
+        this.dfrom = dfrom;
+        this.dtill = dtill;
+        this.amount = amount;
         this.measure = measure;
-        this.measureId = measure.mid;
+        this.tripBuddies = tripBuddies;
         this.comments = comments;
-        withBuddy = new ArrayList<>();
+        this.validated = validated;
     }
 
-    public Trip(Drug drug) {
-        this.drug = drug;
-        this.dfrom = new DateTime();
-        this.dtill = new DateTime();
-        this.number = 1;
-        this.measure = Measure.findById(drug.standardMeasureId);
-        this.comments = "";
-        withBuddy = new ArrayList<>();
-    }
-
-    public void addTripper(User user) {
-        withBuddy.add(user);
-        TripLink tl = new TripLink(user, this);
-        tl.accept();
-        tl.create();
-        this.save();
-    }
-
-    public void addBuddy(User user) {
-        if(!withBuddy.contains(user)){
-            withBuddy.add(user);
-            TripLink tl = new TripLink(user, this);
-            tl.create();
+    public static Trip getFromTriphead(TripHead th, UserModel tripper) {
+        ArrayList<UserModel> tripBuddies = new ArrayList<>();
+        List<TripLink> triplinks = TripLink.findByHead(th);
+        TripLink userTrip = null;
+        for(TripLink tl : triplinks) {
+            if(tl.tripperId == tripper.uid) {
+                userTrip = tl;
+            } else {
+                tripBuddies.add(UserModel.findById(tl.tripperId));
+            }
         }
-        this.save();
+        assert userTrip != null;
+        Trip t = new Trip(tripper, Drug.findById(th.drugId), th.dfrom, th.dtill, userTrip.amount,
+                Measure.findById(userTrip.measureId), tripBuddies, userTrip.comments, userTrip.validated);
+        t.tid = th.tid;
+        return t;
+    }
+
+    public static ArrayList<Trip> getTripsByUser(UserModel u){
+        List<TripHead> userTripHeads = TripHead.getByUser(u);
+        ArrayList<Trip> userTrips = new ArrayList<>();
+        for(TripHead th : userTripHeads) {
+            userTrips.add(Trip.getFromTriphead(th, u));
+        }
+        return userTrips;
     }
 
     public void create() {
-        this.save();
-    }
-
-    public static void delete(int id) {
-        find.ref(id).delete();
-    }
-
-    public static List<Trip> all(){
-        return find.all();
-    }
-
-    public static Trip findById(int id){
-        return find.where().eq("tid", id).findUnique();
-    }
-
-    public static List<Drug> findDrugsUsed(User u){
-        if(u == null) {
-            return new ArrayList<Drug>();
+        TripHead th = new TripHead(drug, dfrom, dtill);
+        th.create();
+        TripLink tl = new TripLink(tripper,th, amount, measure, comments);
+        tl.accept();
+        tl.create();
+        for(UserModel tu : tripBuddies) {
+            tl = new TripLink(tu,th, amount, measure, comments);
+            tl.create();
         }
-        ArrayList<Drug> result = new ArrayList<>();
-        List<TripLink> links = TripLink.findTrips(u);
-        for(TripLink link : links) {
-            Trip t = Trip.findById(link.tripId);
-            result.add(Drug.findById(t.drugId));
-        }
-        return result;
-    }
-
-    public void restore() {
-        withBuddy = new ArrayList<>();
-        TripLink.restoreTripBuddies(this);
-        drug = Drug.findById(drugId);
-        measure = Measure.findById(measureId);
-    }
-
-    public void restoreId() {
-        List<Trip> allTrips = Trip.all();
-        int maxId = -1;
-        for(Trip t : allTrips) {
-            if(t.tid > maxId) {
-                maxId = t.tid;
-            }
-        }
-       tid = maxId;
-    }
-
-    public static List<Trip> getByUser(User u) {
-        List<TripLink> links = TripLink.findTrips(u);
-        List<Trip> result = new ArrayList<>();
-        for(TripLink link : links) {
-            Trip t = Trip.findById(link.tripId);
-            t.restore();
-            result.add(t);
-        }
-        return result;
     }
 }

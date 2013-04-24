@@ -1,13 +1,14 @@
 package models;
 
 
+import play.data.validation.Constraints;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 1-4-13
  * Time: 18:41
  * To change this template use File | Settings | File Templates.
@@ -16,29 +17,43 @@ import java.util.*;
 @Entity
 public class TripLink extends Model {
 
-    @Id
     @GeneratedValue
+    private int id;
+
+    @Id
     public int trid;
 
-    public User tripper;
+    public UserModel tripper;
     public int tripperId;
-    public Trip trip;
+    public TripHead trip;
     public int tripId;
     public boolean validated;
     public boolean declined;
 
+    @Constraints.Min(1)
+    public int amount;
+
+    public Measure measure;
+    public int measureId;
+    public String comments;
+
     public static Model.Finder<Integer, TripLink> find = new Model.Finder(Integer.class, TripLink.class);
 
-    public TripLink(User tripper, Trip trip) {
+    public TripLink(UserModel tripper, TripHead trip, int amount, Measure measure, String comments) {
         this.tripper = tripper;
         this.tripperId = tripper.uid;
         this.trip = trip;
         this.tripId = trip.tid;
+        this.amount = amount;
+        this.measure = measure;
+        this.measureId = measure.mid;
+        this.comments = comments;
         this.validated = false;
         this.declined = false;
     }
 
     public void create() {
+        this.trid = TLUID.create();
         this.save();
     }
 
@@ -50,32 +65,33 @@ public class TripLink extends Model {
         return find.all();
     }
 
-    public void accept() {
+    public boolean accept() {
         if(!this.declined) {
             this.validated = true;
             this.save();
+            return true;
         }
+        return false;
     }
 
-    public void decline() {
+    public boolean decline() {
         if(!this.validated){
             this.declined = true;
             this.save();
+            return true;
         }
+        return false;
     }
 
-    public static void restoreTripBuddies(Trip trip) {
-        List<TripLink> links = find.where().eq("tripId", trip.tid).findList();
-        for (TripLink link : links) {
-            trip.withBuddy.add(User.findById(link.tripperId));
-        }
-    }
-
-    public static boolean trippedWithBuddy(Trip trip, User buddy){
+    public static boolean trippedWithBuddy(TripHead trip, UserModel buddy){
         return TripLink.find.where().eq("tripId", trip.tid).eq("tripperId", buddy.uid).findUnique() == null;
     }
 
-    public static List<TripLink> findTrips(User u) {
-        return find.where().eq("tripperId", u.uid).findList();
+    public static List<TripLink> findTrips(UserModel u) {
+        return find.where().eq("tripperId", u.uid).eq("declined", false).findList();
+    }
+
+    public static List<TripLink> findByHead(TripHead th) {
+        return TripLink.find.where().eq("tripId", th.tid).findList();
     }
 }

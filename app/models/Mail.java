@@ -8,7 +8,7 @@ import play.data.validation.Constraints.*;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 1-4-13
  * Time: 11:57
  * To change this template use File | Settings | File Templates.

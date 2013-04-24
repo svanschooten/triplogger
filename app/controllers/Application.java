@@ -19,7 +19,7 @@ public class Application extends Controller{
         public String password;
 
         public String validate() {
-            if(User.authenticate(alias, password) == null) {
+            if(UserModel.authenticate(alias, password) == null) {
                 return "Invalid user or password";
             }
             return null;
@@ -29,7 +29,7 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render(Trip.findDrugsUsed(User.findByAlias(session().get("alias")))));
+        return ok(index.render(TripHead.findDrugsUsed(UserModel.findByAlias(session().get("alias")))));
     }
 
     @Security.Authenticated(Secured.class)
@@ -43,12 +43,12 @@ public class Application extends Controller{
     }
 
     public static Result login() {
-        User.init();
+        UserModel.init();
         return ok(login.render(Form.form(Login.class)));
     }
 
     public static Result autoLogIn(String user , String pw) {
-        User u = User.authenticate(user, pw);
+        UserModel u = UserModel.authenticate(user, pw);
         if(u != null){
             session().clear();
             session("alias", u.alias);
@@ -77,7 +77,7 @@ public class Application extends Controller{
     }
 
     public static Result signup() {
-        Form<User> signupForm = Form.form(User.class);
+        Form<UserModel> signupForm = Form.form(UserModel.class);
         return ok(signup.render(signupForm));
     }
 
@@ -87,7 +87,7 @@ public class Application extends Controller{
             return badRequest(views.html.p404.render());
         } else {
             vr.validate();
-            session("success", "User validated, you can now log in!");
+            session("success", "UserModel validated, you can now log in!");
             return redirect(
                     routes.Application.index()
             );
@@ -96,24 +96,23 @@ public class Application extends Controller{
 
     @Security.Authenticated(Secured.class)
     public static Result trips() {
-        User u = User.findByAlias(session().get("alias"));
+        UserModel u = UserModel.findByAlias(session().get("alias"));
         u.restore();
-        System.out.println(u.trips.size());
         return ok(views.html.trips.render(u.trips));
     }
 
     @Security.Authenticated(Secured.class)
     public static Result buddylist() {
-        User u = User.findByAlias(session().get("alias"));
+        UserModel u = UserModel.findByAlias(session().get("alias"));
         u.restore();
         return ok(views.html.buddylist.render(u));
     }
 
     @Security.Authenticated(Secured.class)
     public static Result getUserAutocomplete(String term) {
-        List<User> users = User.findLikeAlias(term);
+        List<UserModel> userModels = UserModel.findLikeAlias(term);
         ArrayList<String> aliases = new ArrayList<>();
-        for(User u : users){
+        for(UserModel u : userModels){
             aliases.add(u.alias);
         }
         return ok(Json.toJson(aliases));

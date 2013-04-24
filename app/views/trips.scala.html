@@ -28,25 +28,52 @@
     </div>
 </div>
 
-<table class="triplist table table-hover table-striped" >
+<div id="editTrip" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Edit your trip.</h3>
+    </div>
+    <div class="modal-body">
+        <p> -- add trip form-- </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+<table class="table table-hover table-striped" >
     @if(trips.isEmpty) {
        <p class="muted"> No trips found. </p>
     } else {
+        <thead>
+            <tr>
+                <td>trip ID</td>
+                <td>Date from - until</td>
+                <td>Type of drug</td>
+                <td>Amount</td>
+                <td>With buddies?</td>
+                <td>Comments</td>
+                <td>Edit</td>
+            </tr>
+        </thead>
+        <tbody>
         @for(trip <- trips) {
         <tr>
-            <td><p class="muted">#@trip.tid </p></td>
-            <td><a class="btn btn-link" href=@trip.drug.erowid target="_blank">@trip.drug.name</a> </td>
-            <td> - @trip.number @trip.measure.display </td>
-            <td> <button class="btn btn-link" data-toggle="modal" href=@routes.PostHandler.getTripBuddies(trip.tid) data-target="#buddies">@if(trip.withBuddy.isEmpty) {
+            <td><p><p class="muted">#@trip.tid </p></p></td>
+            <td><p> @trip.dfrom / @trip.dtill </p></td>
+            <td><p><a class="btn btn-link" href=@trip.drug.erowid target="_blank">@trip.drug.name</a> </p></td>
+            <td><p> - @trip.amount @trip.measure.display </p></td>
+            <td><p> <button class="btn btn-link" data-toggle="modal" href=@routes.PostHandler.getTripBuddies(trip.tid) data-target="#buddies">@if(trip.tripBuddies.isEmpty) {
                     Tripping solo!
                 } else {
                      With buddies!
-                } </button></td>
-            <td> <button class="btn btn-link" data-toggle="modal" data-target="#comments" > comments/experiences </button></td>
-
+                } </button></p></td>
+            <td><p> <button class="btn btn-link" data-toggle="modal" data-target="#comments" >Comments/Experiences</button></p></td>
+            <td><p> <a class="btn" data-toggle="modal"  data-target="#editTrip"> <i class="icon-edit"> </i></a></p></td>
 
         </tr>
         }
+        </tbody>
     }
 
 </table>

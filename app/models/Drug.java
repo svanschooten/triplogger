@@ -3,15 +3,17 @@ package models;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.lang.String;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 30-3-13
  * Time: 16:33
  * To change this template use File | Settings | File Templates.
@@ -20,8 +22,9 @@ import java.util.List;
 @Entity
 public class Drug extends Model{
 
-
     @GeneratedValue
+    private int id;
+
     @Id
     public int did;
 
@@ -42,6 +45,7 @@ public class Drug extends Model{
     }
 
     public void create() {
+        this.did = UUID.randomUUID().hashCode();
         this.save();
     }
 

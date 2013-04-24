@@ -7,7 +7,7 @@ import play.libs.Crypto;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Stijn
+ * UserModel: Stijn
  * Date: 1-4-13
  * Time: 12:52
  * To change this template use File | Settings | File Templates.
@@ -15,18 +15,17 @@ import play.libs.Crypto;
 @Entity
 public class ValidateRequest  extends Model{
 
-
     @GeneratedValue
     @Id
     public int vrid;
 
-    public User target;
+    public UserModel target;
     public int targetId;
     public String token;
 
     public static Model.Finder<Integer, ValidateRequest> find = new Model.Finder(Integer.class, ValidateRequest.class);
 
-    public ValidateRequest(User target) {
+    public ValidateRequest(UserModel target) {
         this.target = target;
         this.targetId = target.uid;
         Random rand = new Random();
@@ -52,7 +51,7 @@ public class ValidateRequest  extends Model{
     }
 
     public void validate() {
-        target = User.findById(targetId);
+        target = UserModel.findById(targetId);
         target.validated = true;
         target.save();
         this.delete();
