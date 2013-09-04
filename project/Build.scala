@@ -12,7 +12,9 @@ object ApplicationBuild extends Build {
     "com.typesafe" %% "play-plugins-mailer" % "2.1.0",
     javaCore,
     javaJdbc,
-    javaEbean
+    javaEbean,
+    "com.h2database" % "h2" % "1.3.168",
+    "postgresql" % "postgresql" % "9.1-901.jdbc4"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(

@@ -95,25 +95,21 @@ create sequence validate_request_seq;
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists buddy_link cascade;
 
-drop table if exists buddy_link;
+drop table if exists drug cascade;
 
-drop table if exists drug;
+drop table if exists measure cascade;
 
-drop table if exists measure;
+drop table if exists tluid cascade;
 
-drop table if exists tluid;
+drop table if exists trip_head cascade;
 
-drop table if exists trip_head;
+drop table if exists trip_link cascade;
 
-drop table if exists trip_link;
+drop table if exists user_model cascade;
 
-drop table if exists user_model;
-
-drop table if exists validate_request;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists validate_request cascade;
 
 drop sequence if exists buddy_link_seq;
 

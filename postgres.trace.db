@@ -1,0 +1,43 @@
+09-04 23:46:43 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+SET CLIENT_MIN_MESSAGES[*]=NOTICE "; expected "@, AUTOCOMMIT, MVCC, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, COMPRESS_LOB, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, CREATE, HSQLDB.DEFAULT_TABLE_TYPE, PAGE_STORE, CACHE_TYPE, FILE_LOCK, DB_CLOSE_ON_EXIT, AUTO_SERVER, AUTO_SERVER_PORT, AUTO_RECONNECT, ASSERT, ACCESS_MODE_DATA, OPEN_NEW, JMX, PAGE_SIZE, RECOVER, SCHEMA, DATESTYLE, SEARCH_PATH, SCHEMA_SEARCH_PATH, LOGSIZE"; SQL statement:
+
+SET client_min_messages=notice [42001-168]
+09-04 23:47:01 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Function "CURRENT_SETTING" not found; SQL statement:
+SELECT db.oid, datname, db.dattablespace AS spcoid, spcname, datallowconn, datacl, pg_encoding_to_char(encoding) AS serverencoding, pg_get_userbyid(datdba) AS datowner,has_database_privilege(db.oid, 'CREATE') as cancreate, 
+current_setting('default_tablespace') AS default_tablespace, 
+descr.description
+, db.datconnlimit as connectionlimit  FROM pg_database db
+  LEFT OUTER JOIN pg_tablespace ta ON db.dattablespace=ta.OID
+  LEFT OUTER JOIN pg_description descr ON db.oid=descr.objoid
+ ORDER BY datname [90022-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:2122)
+	at org.h2.command.Parser.readFunction(Parser.java:2174)
+	at org.h2.command.Parser.readTerm(Parser.java:2476)
+	at org.h2.command.Parser.readFactor(Parser.java:2046)
+	at org.h2.command.Parser.readSum(Parser.java:2033)
+	at org.h2.command.Parser.readConcat(Parser.java:2006)
+	at org.h2.command.Parser.readCondition(Parser.java:1871)
+	at org.h2.command.Parser.readAnd(Parser.java:1852)
+	at org.h2.command.Parser.readExpression(Parser.java:1844)
+	at org.h2.command.Parser.parseSelectSimpleSelectPart(Parser.java:1757)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1789)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.pg.PgServerThread.process(PgServerThread.java:368)
+	at org.h2.server.pg.PgServerThread.run(PgServerThread.java:81)
+	at java.lang.Thread.run(Unknown Source)
